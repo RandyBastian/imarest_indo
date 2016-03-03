@@ -70,8 +70,8 @@
 				</div>
 				<div class="portfolio-item hover-anim fonts web-design">
 					<figure>
-						<a href="<?php echo site_url();?>assets/images/marine_membership.png"  title="Portfolio Item Description">
-						<img src="<?php echo site_url();?>assets/images/marine_membership.png" alt="portfolio item"></a>
+						<a href="<?php echo site_url();?>assets/images/marine.png"  title="Marine Membership">
+						<img src="<?php echo site_url();?>assets/images/marine.png" alt="Marine Membership"></a>
 					</figure>
 					<div class="portfolio-meta">
 						<h3 class="portfolio-title"><a href="single-portfolio.html">Lorem ipsum dolor</a></h3>

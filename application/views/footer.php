@@ -4,10 +4,12 @@
                     <div class="row">
                         <div class="col-sm-6 col-md-3">
                             <div class="widget widget-about">
-                                <img src="assets/images/footer-logo.png" alt="The Legend" class="img-responsive">
-                                <p>Far far away, behind the word mount ains, far from the countries Vokalia</p>
-                                <p>texts. Separated they live in Bookm arks grove right at the coast of the control about the blind texts it is an </p>
-                                <a href="#">Learn more</a>
+                                <h4 class="widget-title"><i class="fa fa-angle-double-right"></i>Recent Posts</h4>
+                                <img src="assets/images/logo.png" alt="The Legend" class="img-responsive">
+                                <ul>
+                                    <li><a href="<?php echo site_url("profile");?>">Our Profile</a></li>
+                                    <li><a href="<?php echo site_url("privacy-policy"); ?>">Unrevealed Shortcodes (223)</a></li>
+                                </ul>
                             </div><!-- End .widget -->
                         </div><!-- End .col-sm-6 -->
                         <div class="col-sm-6 col-md-3">
