@@ -42,7 +42,7 @@
                     <a href="#">Events<span class="arrow"></span></a>
                     <ul>
                         <li class="reverse">
-                            <a href="#">Events & Conferences</a>
+                            <a href="<?php echo site_url("event-conferences"); ?>">Events & Conferences</a>
                         </li>
                         <li class="reverse">
                             <a href="#">Training Courses</a>
