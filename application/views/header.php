@@ -5,14 +5,11 @@
         <meta charset="utf-8">
         <title>IMarEST Indonesia</title>
         <meta name="description" content="IMarEST Indonesia">
-
         <!--[if IE]> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <![endif]-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
         <link rel="stylesheet" href="<?php echo site_url();?>assets/css/plugins.min.css">
         <link rel="stylesheet" href="<?php echo site_url();?>assets/css/layerslider.css">
         <link rel="stylesheet" href="<?php echo site_url();?>assets/css/style.css">
-        
         <!-- Favicon -->
         <link rel="icon" type="image/png" href="<?php echo site_url();?>assets/images/icons/favicon.png">
         <link rel="apple-touch-icon" sizes="57x57" href="<?php echo site_url();?>assets/images/icons/faviconx57.png">
@@ -85,8 +82,8 @@
                         </div><!-- End .header-left -->
                         <div class="header-right">
                             <div class="social-icons" id="link_to_imarest">
-                                <a href="http://imarest.org">LOGIN</a>
-                                <a href="http://imarest.org">REGISTER</a>
+                                <a href="http://www.imarest.org/membership-application">LOGIN</a>
+                                <a href="http://www.imarest.org/membership-application">REGISTER</a>
                             </div><!-- End .social-icons -->
                         </div><!-- End .header-right -->
                     </div><!-- End. container -->

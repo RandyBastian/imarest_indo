@@ -210,27 +210,55 @@
                         <!-- Side Bar -->
                         <aside class="col-md-3 col-lg-3 sidebar">
                             <div class="widget widget-flickr">
-                                <h3 class="title widget-title"><span>Photos Flickr</span></h3>
-                                <div class="row">
-                                    <ul class="sidebar-flickr-widget clearfix"></ul>
-                                </div><!-- End .row -->
+                                <h3 class="title widget-title"><span>Events Calendar</span></h3>
+                                <div style="overflow:hidden;">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div id="datetimepicker12"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <script type="text/javascript">
+                                        $(function () {
+                                            $('#datetimepicker12').datetimepicker({
+                                                inline: true,
+                                                sideBySide: true
+                                            });
+                                        });
+                                    </script>
+                                </div>
                             </div><!-- End .widget -->
 
                             <div class="widget">
-                                <h3 class="title widget-title"><span>Tags</span></h3>
-                                <div class="tagcloud">
-                                    <div class="row">
-                                        <a href="#">Portfolio</a>
-                                        <a href="#">Theme</a>
-                                        <a href="#">HTML</a>
-                                        <a href="#">HTML</a>
-                                        <a href="#">Portfolio</a>
-                                        <a href="#">HTML</a>
-                                        <a href="#">Portfolio</a>
-                                        <a href="#">Theme</a>
-                                        <a href="#">HTML</a>
-                                    </div><!-- End .row -->
-                                </div><!-- End .tagcloud -->
+                                <h3 class="title widget-title"><span>Our Courses</span></h3>
+                                <figure class="entry-media carousel slide" id="blog-post-id" data-ride="carousel">
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <h5>Title Cources 1</h5>
+                                            <a href="#" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit"><img src="assets/images/blog/grid/post4.jpg" alt="entry image"></a>
+                                            <br>
+                                            <center>
+                                                <a href="#"><button class="btn btn-primary btn-sm">Read More <i class="fa fa-plus"></i></button></a>
+                                            </center>
+                                        </div><!-- End .item -->
+                                        <div class="item">
+                                            <h5>Title Cources 2</h5>
+                                            <a href="#" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit"><img src="assets/images/blog/grid/post2.jpg" alt="entry image"></a>
+                                            <br>
+                                            <center>
+                                                <a href="#"><button class="btn btn-primary btn-sm">Read More <i class="fa fa-plus"></i></button></a>
+                                            </center>
+                                        </div><!-- End .item -->
+                                    </div><!-- End .carousel-inner -->
+                                    <!-- Controls -->
+                                      <a class="left carousel-control" href="#blog-post-id" role="button" data-slide="prev">
+                                        &lt;<span class="sr-only">Previous</span>
+                                      </a>
+                                      <a class="right carousel-control" href="#blog-post-id" role="button" data-slide="next">
+                                        &gt;<span class="sr-only">Next</span>
+                                      </a>
+                                </figure>
                             </div><!-- End .widget -->
                         </aside><!-- End .col-md-4 -->
                     </div><!-- End .row -->
