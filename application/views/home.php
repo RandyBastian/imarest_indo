@@ -29,17 +29,16 @@
                         </div><!-- End .slide-action -->
                     </div><!-- End .ls-slide -->
                 </div><!-- End #layerslider -->
-
                 <div class="container">
                     <div class="row" style="margin-top:20px">
                         <div class="col-md-9 col-lg-9">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <article class="entry">
-                                        <h2 class="entry-title"><a href="single.html">Lorem ipsum dolor sit amet, consectet .</a></h2>
+                                        <h2 class="entry-title"><a href="<?php echo site_url("single"); ?>">Lorem ipsum dolor sit amet, consectet .</a></h2>
                                         <figure class="entry-media">
-                                            <a href="single.html" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit ">
-                                                <img src="assets/images/blog/grid/post1.jpg" alt="entry image">
+                                            <a href="<?php echo site_url("single"); ?>" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit ">
+                                                <img src="<?php echo site_url();?>assets/images/blog/grid/post1.jpg" alt="entry image">
                                             </a>
                                         </figure>
                                         <div class="entry-meta">
@@ -54,10 +53,10 @@
                                 </div><!-- End .col-sm-6 -->
                                 <div class="col-sm-6">
                                     <article class="entry">
-                                        <h2 class="entry-title"><a href="single.html">Lorem ipsum dolor sit amet, consectet .</a></h2>
+                                        <h2 class="entry-title"><a href="<?php echo site_url("single"); ?>">Lorem ipsum dolor sit amet, consectet .</a></h2>
                                         <figure class="entry-media">
-                                            <a href="single.html" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit ">
-                                                <img src="assets/images/blog/grid/post2.jpg" alt="entry image">
+                                            <a href="<?php echo site_url("single");?>" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit ">
+                                                <img src="<?php echo site_url();?>assets/images/blog/grid/post2.jpg" alt="entry image">
                                             </a>
                                         </figure>
                                         <div class="entry-meta">
@@ -75,10 +74,10 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <article class="entry">
-                                        <h2 class="entry-title"><a href="single.html">Lorem ipsum dolor sit amet, consectet .</a></h2>
+                                        <h2 class="entry-title"><a href="<?php echo site_url("single");?>">Lorem ipsum dolor sit amet, consectet .</a></h2>
                                         <figure class="entry-media">
-                                            <a href="single.html" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit ">
-                                                <img src="assets/images/blog/grid/post5.jpg" alt="entry image">
+                                            <a href="<?php echo site_url("single"); ?>" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit ">
+                                                <img src="<?php echo site_url();?>assets/images/blog/grid/post5.jpg" alt="entry image">
                                             </a>
                                         </figure>
                                         <div class="entry-meta">
@@ -93,10 +92,10 @@
                                 </div><!-- End .col-sm-6 -->
                                 <div class="col-sm-6">
                                     <article class="entry">
-                                        <h2 class="entry-title"><a href="single.html">Lorem ipsum dolor sit amet, consectet .</a></h2>
+                                        <h2 class="entry-title"><a href="<?php echo site_url("single");?>">Lorem ipsum dolor sit amet, consectet .</a></h2>
                                         <figure class="entry-media">
-                                            <a href="single.html" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit ">
-                                                <img src="assets/images/blog/grid/post6.jpg" alt="entry image">
+                                            <a href="<?php echo site_url("single");?>" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit ">
+                                                <img src="<?php echo site_url();?>assets/images/blog/grid/post6.jpg" alt="entry image">
                                             </a>
                                         </figure>
                                         <div class="entry-meta">
@@ -114,10 +113,10 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <article class="entry">
-                                        <h2 class="entry-title"><a href="single.html">Lorem ipsum dolor sit amet, consectet .</a></h2>
+                                        <h2 class="entry-title"><a href="<?php echo site_url("single"); ?>">Lorem ipsum dolor sit amet, consectet .</a></h2>
                                         <figure class="entry-media">
-                                            <a href="single.html" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit ">
-                                                <img src="assets/images/blog/grid/post7.jpg" alt="entry image">
+                                            <a href="<?php echo site_url("single"); ?>" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit ">
+                                                <img src="<?php echo site_url();?>assets/images/blog/grid/post7.jpg" alt="entry image">
                                             </a>
                                         </figure>
                                         <div class="entry-meta">
@@ -132,10 +131,10 @@
                                 </div><!-- End .col-sm-6 -->
                                 <div class="col-sm-6">
                                     <article class="entry">
-                                        <h2 class="entry-title"><a href="single.html">Lorem ipsum dolor sit amet, consectet .</a></h2>
+                                        <h2 class="entry-title"><a href="<?php echo site_url("single"); ?>">Lorem ipsum dolor sit amet, consectet .</a></h2>
                                         <figure class="entry-media">
-                                            <a href="single.html" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit ">
-                                                <img src="assets/images/blog/grid/post8.jpg" alt="entry image">
+                                            <a href="<?php echo site_url("single"); ?>" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit ">
+                                                <img src="<?php echo site_url();?>assets/images/blog/grid/post8.jpg" alt="entry image">
                                             </a>
                                         </figure>
                                         <div class="entry-meta">
@@ -152,10 +151,10 @@
                              <div class="row">
                                 <div class="col-sm-4">
                                     <article class="entry">
-                                        <h2 class="entry-title"><a href="single.html">Lorem ipsum dolor sit amet, consectet .</a></h2>
+                                        <h2 class="entry-title"><a href="<?php echo site_url("single"); ?>">Lorem ipsum dolor sit amet, consectet .</a></h2>
                                         <figure class="entry-media">
-                                            <a href="single.html" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit ">
-                                                <img src="assets/images/blog/grid/post1.jpg" alt="entry image">
+                                            <a href="<?php echo site_url("single"); ?>" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit ">
+                                                <img src="<?php echo site_url();?>assets/images/blog/grid/post1.jpg" alt="entry image">
                                             </a>
                                         </figure>
                                         <div class="entry-meta">
@@ -170,10 +169,10 @@
                                 </div><!-- End .col-sm-4 -->
                                 <div class="col-sm-4">
                                     <article class="entry">
-                                        <h2 class="entry-title"><a href="single.html">Lorem ipsum dolor sit amet, consectet .</a></h2>
+                                        <h2 class="entry-title"><a href="<?php echo site_url("single"); ?>">Lorem ipsum dolor sit amet, consectet .</a></h2>
                                         <figure class="entry-media">
-                                            <a href="single.html" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit ">
-                                                <img src="assets/images/blog/grid/post2.jpg" alt="entry image">
+                                            <a href="<?php echo site_url("single"); ?>" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit ">
+                                                <img src="<?php echo site_url();?>assets/images/blog/grid/post2.jpg" alt="entry image">
                                             </a>
                                         </figure>
                                         <div class="entry-meta">
@@ -188,10 +187,10 @@
                                 </div><!-- End .col-sm-4 -->
                                 <div class="col-sm-4">
                                     <article class="entry">
-                                        <h2 class="entry-title"><a href="single.html">Lorem ipsum dolor sit amet, consectet .</a></h2>
+                                        <h2 class="entry-title"><a href="<?php echo site_url("single"); ?>">Lorem ipsum dolor sit amet, consectet .</a></h2>
                                         <figure class="entry-media">
-                                            <a href="single.html" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit ">
-                                                <img src="assets/images/blog/grid/post1.jpg" alt="entry image">
+                                            <a href="<?php echo site_url("single"); ?>" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit ">
+                                                <img src="<?php echo site_url();?>assets/images/blog/grid/post1.jpg" alt="entry image">
                                             </a>
                                         </figure>
                                         <div class="entry-meta">
@@ -209,7 +208,7 @@
 
                         <!-- Side Bar -->
                         <aside class="col-md-3 col-lg-3 sidebar">
-                            <div class="widget widget-flickr">
+                            <div class="widget">
                                 <h3 class="title widget-title"><span>Events Calendar</span></h3>
                                 <div style="overflow:hidden;">
                                     <div class="form-group">
@@ -236,7 +235,7 @@
                                     <div class="carousel-inner" role="listbox">
                                         <div class="item active">
                                             <h5>Title Cources 1</h5>
-                                            <a href="#" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit"><img src="assets/images/blog/grid/post4.jpg" alt="entry image"></a>
+                                            <a href="#" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit"><img src="<?php echo site_url();?>assets/images/blog/grid/post4.jpg" alt="entry image"></a>
                                             <br>
                                             <center>
                                                 <a href="#"><button class="btn btn-primary btn-sm">Read More <i class="fa fa-plus"></i></button></a>
@@ -244,7 +243,7 @@
                                         </div><!-- End .item -->
                                         <div class="item">
                                             <h5>Title Cources 2</h5>
-                                            <a href="#" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit"><img src="assets/images/blog/grid/post2.jpg" alt="entry image"></a>
+                                            <a href="#" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit"><img src="<?php echo site_url();?>assets/images/blog/grid/post2.jpg" alt="entry image"></a>
                                             <br>
                                             <center>
                                                 <a href="#"><button class="btn btn-primary btn-sm">Read More <i class="fa fa-plus"></i></button></a>

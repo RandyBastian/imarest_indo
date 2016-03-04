@@ -19,52 +19,55 @@
         <div id="mobile-menu-container">
             <div class="mobile-menu-title">NAVIGATION <a href="" id="mobile-menu-close">&times;</a></div>
             <ul class="mobile-menu">
-                <li>
+                <li class="active">
                     <a href="#">Membership<span class="arrow"></span></a>
                     <ul>
-                        <li>
-                            <a href="#">Membership & Registration</a>
-                        </li>
+                        <li><a href="<?php echo site_url("membership");?>">Membership & Registration</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#">Resources<span class="arrow"></span></a>
-                    <ul>
+                     <ul>
                         <li class="reverse">
-                            <a href="#">News Room</a>
+                            <a href="<?php echo site_url("news-room");?>">News Room</a>
                         </li>
                         <li class="reverse">
-                            <a href="#">Virtual Library</a>
+                            <a href="http://www.imarest.org/resources/the-virtual-library" target="_blank">Virtual Library</a>
+                        </li>
+                        <li class="reverse">
+                            <a href="http://www.imarest.org/resources/book-publications" target="_blank">Book Publications</a>
+                        </li>
+                        <li class="reverse">
+                            <a href="http://www.imarest.org/resources/book-publications" target="_blank"><img src="<?php echo site_url();?>/assets/images/IMarESTTVButton.png"></a>
+                        </li>
+                        <li class="reverse">
+                            <a href="http://www.imarest.org/themarineprofessional" target="_blank"><img src="<?php echo site_url();?>/assets/images/magazine.png"></a>
+                        </li>
+                        <li class="reverse">
+                            <a href="https://www.mla-uk.com/" target="_blank"><img src="<?php echo site_url();?>/assets/images/MLAButton.png"></a>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <a href="#">Events<span class="arrow"></span></a>
                     <ul>
-                        <li class="reverse">
-                            <a href="<?php echo site_url("event-conferences"); ?>">Events & Conferences</a>
-                        </li>
-                        <li class="reverse">
-                            <a href="#">Training Courses</a>
-                        </li>
+                        <li><a href="<?php echo site_url("event-conferences"); ?>">Events & Conferences</a></li>
+                        <li><a href="<?php echo site_url("training-courses"); ?>">Training Courses</a></li>
+                        <li><a href="https://www.mla-uk.com/" target="_blank"><img src="<?php echo site_url();?>assets/images/MLAButton.png"></a></li>
                     </ul>
                 </li>
-                <li class="reverse">
-                    <a href="#">Careers</a>
+                <li>
+                    <a href="<?php echo site_url("careers"); ?>">Careers</a>
                 </li>
                 <li>
                     <a href="#">Gallery<span class="arrow"></span></a>
                     <ul>
-                        <li class="reverse">
-                            <a href="#">Photo</a>
-                        </li>
-                        <li class="reverse">
-                            <a href="#">Video</a>
-                        </li>
+                        <li><a href="<?php echo site_url("photo-gallery");?>">Photo</a></li>
+                        <li><a href="<?php echo site_url("video-gallery");?>">Video</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#">FAQ</a>
+                    <a href="<?php echo site_url("faq");?>">FAQ<span>Tanya Jawab</span></a>
                 </li>
             </ul>
         </div><!-- End #mobile-menu-container -->
@@ -111,7 +114,6 @@
                                     </form>
                                 </div><!-- End. dropdown-menu -->
                             </div><!-- End. dropdown -->
-
                             <nav class="menu-container">
                                 <ul class="menu">
                                     <li class="active">
@@ -121,35 +123,51 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#">Resources<i class="fa fa-angle-down"></i><span>Virtual Library</span></a>
-                                        <ul>
-                                            <li><a href="#">News Room</a></li>
-                                            <li><a href="#">Virtual Library</a></li>
+                                        <a href="#">Resources<i class="fa fa-angle-down"></i><span>Virtual Library & Book Publications</span></a>
+                                         <ul>
+                                            <li class="reverse">
+                                                <a href="<?php echo site_url("news-room");?>">News Room</a>
+                                            </li>
+                                            <li class="reverse">
+                                                <a href="http://www.imarest.org/resources/the-virtual-library" target="_blank">Virtual Library</a>
+                                            </li>
+                                            <li class="reverse">
+                                                <a href="http://www.imarest.org/resources/book-publications" target="_blank">Book Publications</a>
+                                            </li>
+                                            <li class="reverse">
+                                                <a href="http://www.imarest.org/resources/book-publications" target="_blank"><img src="<?php echo site_url();?>/assets/images/IMarESTTVButton.png"></a>
+                                            </li>
+                                            <li class="reverse">
+                                                <a href="http://www.imarest.org/themarineprofessional" target="_blank"><img src="<?php echo site_url();?>/assets/images/magazine.png"></a>
+                                            </li>
+                                            <li class="reverse">
+                                                <a href="https://www.mla-uk.com/" target="_blank"><img src="<?php echo site_url();?>/assets/images/MLAButton.png"></a>
+                                            </li>
                                         </ul>
                                     </li>
                                     <li>
                                         <a href="#">Events<i class="fa fa-angle-down"></i><span>Courses & Conferences</span></a>
                                         <ul>
-                                            <li><a href="#">Events & Conferences</a></li>
-                                            <li><a href="#">Training Courses</a></li>
+                                            <li><a href="<?php echo site_url("event-conferences"); ?>">Events & Conferences</a></li>
+                                            <li><a href="<?php echo site_url("training-courses"); ?>">Training Courses</a></li>
+                                            <li><a href="https://www.mla-uk.com/" target="_blank"><img src="<?php echo site_url();?>assets/images/MLAButton.png"></a></li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#">Careers<span>Jobs</span></a>
+                                        <a href="<?php echo site_url("careers"); ?>">Careers<span>Jobs</span></a>
                                     </li>
                                     <li>
                                         <a href="#">Gallery<i class="fa fa-angle-down"></i><span>Photo & Video Decumentation</span></a>
                                         <ul>
-                                            <li><a href="#">Photo</a></li>
-                                            <li><a href="#">Video</a></li>
+                                            <li><a href="<?php echo site_url("photo-gallery");?>">Photo</a></li>
+                                            <li><a href="<?php echo site_url("video-gallery");?>">Video</a></li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#">FAQ<span>Tanya Jawab</span></a>
+                                        <a href="<?php echo site_url("faq");?>">FAQ<span>Tanya Jawab</span></a>
                                     </li>
                                 </ul>
                             </nav>
-                            
                         </div><!-- End .header-right -->
                     </div><!-- End. container -->
                 </div><!-- End .header-inner -->

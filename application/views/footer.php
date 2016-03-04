@@ -101,7 +101,7 @@
         $('#layerslider').layerSlider({
             responsiveUnder : 1200,
             layersContainer : 1200,
-            skinsPath: 'assets/css/skins/',
+            
             navButtons: true,
             navStartStop:false,
             showCircleTimer: true,
