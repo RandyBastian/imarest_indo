@@ -80,9 +80,10 @@
                   },
                   formCreated: function(event, data) {
                       isi_halaman = CKEDITOR.replace('isi_halaman', { 
-                        filebrowserBrowseUrl :'<?php echo base_url() ?>assets/admin/plugins/ckeditor/filemanager/browser/default/browser.html?Connector=<?php echo base_url() ?>assets/admin/plugins/ckeditor/filemanager/connectors/php/connector.php',
-                        filebrowserImageBrowseUrl : '<?php echo base_url() ?>assets/admin/plugins/ckeditor/filemanager/browser/default/browser.html?Type=Image&amp;Connector=<?php echo base_url() ?>assets/admin/plugins/ckeditor/filemanager/connectors/php/connector.php',
-                        filebrowserFlashBrowseUrl :'<?php echo base_url() ?>assets/admin/plugins/ckeditor/filemanager/browser/default/browser.html?Type=Flash&amp;Connector=<?php echo base_url() ?>assets/admin/plugins/ckeditor/filemanager/connectors/php/connector.php'
+                        extraPlugins: 'imageuploader'
+                        // filebrowserBrowseUrl :'<?php echo base_url() ?>assets/admin/plugins/ckeditor/filemanager/browser/default/browser.html?Connector=<?php echo base_url() ?>assets/admin/plugins/ckeditor/filemanager/connectors/php/connector.php',
+                        // filebrowserImageBrowseUrl : '<?php echo base_url() ?>assets/admin/plugins/ckeditor/filemanager/browser/default/browser.html?Type=Image&amp;Connector=<?php echo base_url() ?>assets/admin/plugins/ckeditor/filemanager/connectors/php/connector.php',
+                        // filebrowserFlashBrowseUrl :'<?php echo base_url() ?>assets/admin/plugins/ckeditor/filemanager/browser/default/browser.html?Type=Flash&amp;Connector=<?php echo base_url() ?>assets/admin/plugins/ckeditor/filemanager/connectors/php/connector.php'
                       });
                       $($(data.form.parent()).parent()).css('left', '350px');
                       $($(data.form.parent()).parent()).css('top', '80px');

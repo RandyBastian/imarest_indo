@@ -91,7 +91,7 @@
                       tipe_event: 
                       {
                           title: 'Tipe',
-                          options: { '1': 'Confrence', '2': 'Event', '3': 'Course' }                          
+                          options: { 'Confrence': 'Confrence', 'Event': 'Event', 'Course': 'Course' }                          
                       },
                       pic_event: 
                       {
@@ -103,17 +103,6 @@
                           title: 'Link Event',
                           list: false                    
                       },
-                      Proses:
-                      {
-                          title: 'Proses Pasien',
-                          display: function (data) 
-                          {
-                              return '<a href="<?php echo site_url() ?>/proses/prosespasien/'+ data.record.no_RM +'">Proses</a>'; 
-                          },
-                          edit: false,
-                          sorting: false,
-                          create: false
-                      }
                   },
               });
 

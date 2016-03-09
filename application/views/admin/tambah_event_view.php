@@ -4,12 +4,12 @@
       <div class="box-header with-border">
         <h3 class="box-title">Horizontal Form</h3>
       </div>
-      <form class="form-horizontal">
+      <form class="form-horizontal" id="myform" method="POST" action="<?php echo site_url("admin/event/createnew");?>" enctype="multipart/form-data">
         <div class="box-body">
           <div class="form-group">
             <label class="col-sm-2 control-label">Nama Event</label>
             <div class="col-sm-6">
-              <input type="text" class="form-control" id="inputEmail3" placeholder="nama">
+              <input type="text" class="form-control" id="nama" name="nama" placeholder="nama">
             </div>
           </div>
           <h3 class="box-title">Waktu event</h3>
@@ -20,7 +20,7 @@
                   <div class="input-group-addon">
                     <i class="fa fa-clock-o"></i>
                   </div>
-                  <input type="text" class="form-control" id="reservationtime">
+                  <input type="text" class="form-control" id="reservationtime" name="reservationtime" >
                 </div>
               </div>
           </div>
@@ -28,51 +28,85 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">Kota</label>
             <div class="col-sm-6">
-                <select class="form-control select2" style="width: 100%;">
-                  <option>Course</option>
-                  <option>Training</option>
-                  <option>Confrence</option>
+                <select id="kota" name="kota" class="form-control select2" style="width: 100%;">
+                  <?php 
+                        foreach($kota as $row)
+                        { 
+                          echo '<option value="'.$row->id_kota.'">'.$row->nama_kota.'</option>';
+                        }
+                    ?>
                 </select>
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">Negara</label>
             <div class="col-sm-6">
-                <select class="form-control select2" style="width: 100%;">
-                  <option>Course</option>
-                  <option>Training</option>
-                  <option>Confrence</option>
+                <select class="form-control select2" style="width: 100%" id="negara" name="negara">
+                    <?php 
+                        foreach($negara as $row)
+                        { 
+                          echo '<option value="'.$row->id_negara.'">'.$row->nama_negara.'</option>';
+                        }
+                    ?>
+                </select>
                 </select>
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">Latitude</label>
             <div class="col-sm-6">
-              <input type="text" class="form-control" id="inputPassword3" placeholder="Latitude">
+              <input type="text" class="form-control" id="lat" name="lat" placeholder="Latitude">
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">Longitude</label>
             <div class="col-sm-6">
-              <input type="text" class="form-control" id="inputPassword3" placeholder="Longitude">
+              <input type="text" class="form-control" id="lang" name="lang" placeholder="Longitude">
             </div>
           </div>
           <h3 class="box-title">Lain-lain</h3>
           <div class="form-group">
             <label class="col-sm-2 control-label">Tipe Event</label>
             <div class="col-sm-6">
-                <select class="form-control select2" style="width: 100%;">
-                  <option>Course</option>
-                  <option>Training</option>
-                  <option>Confrence</option>
+                <select class="form-control select2" style="width: 100%;" id="tipe" name="tipe">
+                   <option value="Course">Course</option>
+                  <option value="Training">Training</option>
+                  <option value="Confrence">Confrence</option>
                 </select>
             </div>
           </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Link Pendaftaran</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="link" name="link" placeholder="Link">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Gambar Event</label>
+            <div class="col-sm-6">
+              <input type="file" name="userfile"  />
+            </div>
+          </div>
+          
+          <!-- <div class="form-group">
+            <div class="col-sm-6 col-md-offset-2">
+              <input type="radio" name="action" id="track" value="track" /><label for="track">Tidak ada</label><br />
+              <input type="radio" name="action" id="event" value="event"  /><td><label for="event">Ada</label></td><td><input type="text"></td><br/>
+            </div>                      
+            </div>
+          </div> -->
+          <div class="box-footer mid">
+            <button type="submit" class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-info right">Submit</button>
+          </div>
         </div>
+ 
       </form>
     </div>
   </section>
 </div>
+
  <script>
       $(function () {
         //Initialize Select2 Elements
@@ -88,7 +122,7 @@
         //Date range picker
         $('#reservation').daterangepicker();
         //Date range picker with time picker
-        $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
+        $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'YYYY-MM-DD HH:mm '});
         //Date range as a button
         $('#daterange-btn').daterangepicker(
             {
