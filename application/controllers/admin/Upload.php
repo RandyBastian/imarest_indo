@@ -17,7 +17,9 @@
 		    ),
 		    'total' => 0,
 		    'images' => array(),
-		    'error' => ''
+		    'error' => '',
+		    'id' => '',
+		    'letak' => ''
 		);
 
 		public function index(){
@@ -106,7 +108,7 @@
 		{
 		    $fileName = $_FILES['userfile'];
 
-			$config['upload_path']    = $this->data['dir']['original'].'/'.$letak;
+			$config['upload_path']    = $this->data['dir']['original'].$letak."/";
 			$config['allowed_types']  = 'gif|jpg|png|jpeg';
             $config['overwrite']       = TRUE;
             $config['max_size']        = '1000000';  // Can be set to particular file size
@@ -134,7 +136,7 @@
 
 		        $img = $this->upload->data();
 		        // create thumbnail
-		        $new_image = $this->data['dir']['thumb'].'/'.$letak.'thumb_'.$img['file_name'];
+		        $new_image = $this->data['dir']['thumb'].$letak."/".'thumb_'.$img['file_name'];
 
 		        $c_img_lib = array(
 		            'image_library'     => 'gd2',
@@ -159,27 +161,39 @@
 	    	$name = $this->upload_model->cari_folder($id);
 	    	$nama = $name->result_array();
 
+	    	// print_r($nama);
+	    	$this->data['id'] = $id;
+
+	    	$this->data['letak'] = $nama[0]['letak_folder'];	
+	    
+	    	
+
 	    	if ($this->input->post('btn_upload')) {
-		        $this->upload_foto($nama['letak_folder']);
+		        $this->upload_foto($nama[0]['letak_folder']);
 		    }
 		    $start=0;
 		    $this->load->library('pagination');
 
 		    $c_paginate['base_url'] = site_url('admin/Upload/hasilupload');
 		    $c_paginate['per_page'] = '9';
+		    	    	// print_r($nama);
 		    $finish = $start + $c_paginate['per_page'];
-
-		    if (is_dir($this->data['dir']['thumb'].'/'.$nama['letak_folder']))
+		    $letak_galeri = $this->data['dir']['original'].$nama[0]['letak_folder'];
+		    $letak_thumbs =  $this->data['dir']['thumb'].$nama[0]['letak_folder'];
+		    // print_r($letak_galeri);
+		    // print_r($letak_thumbs);
+		    if (is_dir($this->data['dir']['thumb'].$nama[0]['letak_folder']))
 		    {
 		        $i = 0;
-		        if ($dh = opendir($this->data['dir']['thumb'].'/'.$nama['letak_folder'])) {
+		        if ($dh = opendir($this->data['dir']['thumb'].$nama[0]['letak_folder'])) {
 		            while (($file = readdir($dh)) !== false) {
 		                // get file extension
 		                $ext = strrev(strstr(strrev($file), ".", TRUE));
 		                if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png') {
 		                    if ($start <= $this->data['total'] && $this->data['total'] < $finish) {
-		                        $this->data['images'][$i]['thumb'].'/'.$nama['letak_folder']) = $file;
-		                        $this->data['images'][$i]['original'].'/'.$nama['letak_folder']) = str_replace('thumb_', '', $file);
+		                        $nama[0]['letak_folder']."/".$this->data['images'][$i]['thumb'] = $file;
+		                        print_r($nama[0]['letak_folder']."/".$this->data['images'][$i]['thumb']);
+		                        $nama[0]['letak_folder']."/".$this->data['images'][$i]['original'] = str_replace('thumb_', '', $file);
 		                        $i++;
 		                    }
 		                    $this->data['total']++;
@@ -189,6 +203,8 @@
 		        }
 		    }
 
+
+
 		    $c_paginate['total_rows'] = $this->data['total'];
 
 		    $this->pagination->initialize($c_paginate);
@@ -197,11 +213,14 @@
 		    $this->load->view('admin/lihatgaleri_view', $this->data);
 			$this->load->view('admin/footer');
 		}
-		public function delete($ori_img)
+		public function delete()
 		{
-		    unlink($this->data['dir']['original'].$ori_img);
-		    unlink($this->data['dir']['thumb'].'thumb_'.$ori_img);
-		    redirect('admin/Upload/hasilupload');
+		    $letak=$this->uri->segment(4); // 1stsegment
+			$nama_file=$this->uri->segment(5);
+			$id = $this->uri->segment(6);
+		    unlink($this->data['dir']['original'].$letak."/".$nama_file);
+		    unlink($this->data['dir']['thumb'].$letak."/".'thumb_'.$nama_file);
+		    redirect('admin/Upload/hasilupload/' . $id);
 		}
 	}
  ?>

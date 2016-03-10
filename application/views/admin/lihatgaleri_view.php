@@ -15,14 +15,14 @@
 <div id="container">
     <div id="imgshow">
         <?php if (isset($images[0])) { ?>
-        <a href="<?php echo base_url().$dir['original'].$images[0]['original']; ?>" target="_blank" id="detimglink">
-            <img class="imgdet" name="img_tag" src="<?php echo base_url().$dir['original'].$images[0]['original']; ?>" width="500"/>
+        <a href="<?php echo base_url().$dir['original'].$letak."/".$images[0]['original']; ?>" target="_blank" id="detimglink">
+            <img class="imgdet" name="img_tag" src="<?php echo base_url().$dir['original'].$letak."/".$images[0]['original']; ?>" width="500"/>
         </a>
         <?php } ?>
     </div>
 
     <div id="imglist">
-        <form enctype="multipart/form-data" id="fupload" method="post" action="<?php echo site_url('admin/Upload/hasilupload'); ?>">
+        <form enctype="multipart/form-data" id="fupload" method="post" action="<?php echo site_url('admin/Upload/hasilupload/' . $id); ?>">
             <input name="userfile" type="file" size="20"/>
             <input type="submit" name="btn_upload" value="Upload &uarr;" class="btnupload"/>
             <?php if (isset ($error)) { ?>
@@ -37,12 +37,12 @@
         <?php foreach($images as $key => $img) { ?>
         <div class="imgbox">
             <div>
-                <a href="javascript:" onclick="changepic('<?php echo base_url().$dir['original'].$img['original']; ?>', 'thumb_<?php echo $key; ?>');">
-                <img class="thumb" name="thumb" id="thumb_<?php echo $key; ?>" src="<?php echo base_url().$dir['thumb'].$img['thumb']; ?>"/>
+                <a href="javascript:" onclick="changepic('<?php echo base_url().$dir['original'].$letak."/".$img['original']; ?>', 'thumb_<?php echo $key; ?>');">
+                <img class="thumb" name="thumb" id="thumb_<?php echo $key; ?>" src="<?php echo base_url().$dir['thumb'].$letak."/".$img['thumb']; ?>"/>
                 </a>
             </div>
             <div class="dadel">
-            <a class="adel" href="<?php echo site_url('admin/Upload/delete/'.$img['original']); ?>">
+            <a class="adel" href="<?php echo site_url('admin/Upload/delete/'.$letak.'/'.$img['original'].'/'. $id); ?>">
                 delete
             </a>
             </div>

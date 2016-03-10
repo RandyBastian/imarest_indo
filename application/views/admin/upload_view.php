@@ -66,7 +66,7 @@
                           title: 'Lihat Galeri',
                           display: function (data) 
                           {
-                              return '<a href="<?php echo site_url() ?>admin/Upload/hasilupload/">Lihat</a>';
+                              return '<a href="<?php echo site_url() ?>admin/Upload/hasilupload/'+ data.record.id_galeri +'">Lihat</a>';
                           },
                           edit: false,
                           sorting: false,

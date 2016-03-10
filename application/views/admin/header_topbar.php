@@ -71,6 +71,7 @@
                     <li><a href="<?=site_url("admin/kontak")?>">Kontak</a></li>
                     <li><a href="<?=site_url("admin/Negara")?>">Negara</a></li>
                     <li><a href="<?=site_url("admin/Kota")?>">Kota</a></li>
+                    <li><a href="<?=site_url("admin/Resource")?>">Resource</a></li>
                   </ul>
                 </li>
                 <li class="dropdown">
