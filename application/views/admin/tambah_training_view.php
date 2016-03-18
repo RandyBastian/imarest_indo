@@ -8,17 +8,17 @@
       <div class="box-header with-border">
         <h3 class="box-title">Horizontal Form</h3>
       </div>
-      <form class="form-horizontal" id="myform" method="POST" action="<?php echo site_url("admin/event/createnew");?>" enctype="multipart/form-data">
+      <form class="form-horizontal" id="myform" method="POST" action="<?php echo site_url("admin/training/createnew");?>" enctype="multipart/form-data">
         <div class="box-body">
           <div class="form-group">
-            <label class="col-sm-2 control-label">Nama Event</label>
+            <label class="col-sm-2 control-label">Nama Training</label>
             <div class="col-sm-6">
               <input type="text" class="form-control" id="nama" name="nama" placeholder="nama">
             </div>
           </div>
-          <h3 class="box-title">Waktu event</h3>
+          <h3 class="box-title">Waktu Training</h3>
           <div class="form-group">
-            <label class="col-sm-2 control-label">Rentang Waktu Event</label>
+            <label class="col-sm-2 control-label">Rentang Waktu Training</label>
               <div class="col-sm-6"> 
                 <div class="input-group">
                   <div class="input-group-addon">
@@ -28,7 +28,7 @@
                 </div>
               </div>
           </div>
-          <h3 class="box-title">Lokasi event</h3>
+          <h3 class="box-title">Lokasi Training</h3>
           <div class="form-group">
             <label class="col-sm-2 control-label">Kota</label>
             <div class="col-sm-6">
@@ -101,8 +101,7 @@
             <label class="col-sm-2 control-label">Tipe Event</label>
             <div class="col-sm-6">
                 <select class="form-control select2" style="width: 100%;" id="tipe" name="tipe">
-                  <option value="Course">Course</option>
-                  <option value="Confrence">Confrence</option>
+                  <option value="Training">Training</option>
                 </select>
             </div>
           </div>
@@ -114,7 +113,7 @@
           </div>
 
           <div class="form-group">
-            <label class="col-sm-2 control-label">Gambar Event</label>
+            <label class="col-sm-2 control-label">Gambar Training</label>
             <div class="col-sm-6">
               <input type="file" name="userfile"  />
             </div>
@@ -128,8 +127,8 @@
             </div>
           </div> -->
           <div class="box-footer mid">
-            <a href="<?=site_url("admin/event")?>"><button type="button" class="btn btn-default">Cancel</button></a>
-            <button type="submit" class="btn btn-info right"  >Submit</button>
+            <a href="<?=site_url("admin/event/indextraining")?>"><button type="button" class="btn btn-default">Cancel</button></a>
+            <button type="submit" class="btn btn-info right"  onclick="return getmap();" name="pos">Submit</button>
           </div>
         </div>
  

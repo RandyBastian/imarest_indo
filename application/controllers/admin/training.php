@@ -2,7 +2,7 @@
 	/**
 	* 
 	*/
-	class Event extends CI_Controller
+	class Training extends CI_Controller
 	{
 		
 		function __construct()
@@ -14,7 +14,7 @@
 
 		public function index(){
 			$this->load->view('admin/header_topbar');
-			$this->load->view('admin/event_view');
+			$this->load->view('admin/training_view');
 			$this->load->view('admin/footer');
 		}
 
@@ -43,46 +43,18 @@
 			print json_encode($jTableResult);
 		}
 
-		public function listevent(){
-			$this->load->model('admin/event_model');
-			$jtStartIndex = $this->input->get('jtStartIndex'); 
-			$jtPageSize = $this->input->get('jtPageSize'); 
-			$jtSorting = $this->input->get('jtSorting');
-
-			$all_event = $this->event_model->get_all_event();
-			$result = $this->event_model->get_all_paging_sorting_event($jtStartIndex,$jtPageSize,$jtSorting);
-			
-
-			$rows = $result->result_array(); 
-			$recordCount = $all_event->num_rows(); 
-			
-			$jTableResult = array(); 
-			$jTableResult['Result'] = "OK"; 
-			$jTableResult['TotalRecordCount'] = $recordCount; 
-			$jTableResult['Records'] = $rows; 
-			
-			print json_encode($jTableResult);
-			
-		}
-
-		public function indextraining(){
-			$this->load->view('admin/header_topbar');
-			$this->load->view('admin/training_view');
-			$this->load->view('admin/footer');
-		}
-
 		public function listtraining(){
 			$this->load->model('admin/event_model');
 			$jtStartIndex = $this->input->get('jtStartIndex'); 
 			$jtPageSize = $this->input->get('jtPageSize'); 
 			$jtSorting = $this->input->get('jtSorting');
 
-			$all_event = $this->event_model->get_all_training();
+			$all_training = $this->event_model->get_all_training();
 			$result = $this->event_model->get_all_paging_sorting_training($jtStartIndex,$jtPageSize,$jtSorting);
 			
 
 			$rows = $result->result_array(); 
-			$recordCount = $all_event->num_rows(); 
+			$recordCount = $all_training->num_rows(); 
 			
 			$jTableResult = array(); 
 			$jTableResult['Result'] = "OK"; 
@@ -94,29 +66,6 @@
 		}
 
 		public function tambah(){
-			$this->load->model('admin/event_model');
-			$data['negara'] = $this->event_model->getAllNegara();
-			$data['kota'] = $this->event_model->getAllKota();
-			// $this->load->library('leaflet');
-			// $config = array(
-			//     'center'         => '-0.959, 100.39716', // Center of the map
-			//     'zoom'           => 12, // Map zoom
-			//     );
-			// $this->leaflet->initialize($config);
-
-			// $marker = array(
-			//     'latlng'        =>'-0.959, 100.39716', // Marker Location
-			//     'popupContent'  => 'Hi, iam a popup!!', // Popup Content
-			//     );
-			// $this->leaflet->add_marker($marker);
-
-			// $this->data['map'] =  $this->leaflet->create_map();
-			$this->load->view('admin/header_topbar');
-			$this->load->view('admin/tambah_event_view',$data);
-			$this->load->view('admin/footer');
-		}
-
-		public function tambahtraining(){
 			$this->load->model('admin/event_model');
 			$data['negara'] = $this->event_model->getAllNegara();
 			$data['kota'] = $this->event_model->getAllKota();
@@ -160,14 +109,11 @@
 
 	        
 	        $gab = $image.$fileName['name'];
-	        
-			// $image = 'image.jpg'; 
-		    // $directory = '/path/to/image'; 
-		    // $image_location = $directory . "/" . $image; 
+	     
 		    			
 			if(! $this->upload->do_upload('userfile')){
 				$upload_error = array('error' => $this->upload->display_errors());
-				echo $config['upload_path'];
+				// echo $config['upload_path'];
 				print_r($upload_error);
 				
 			}
@@ -181,37 +127,29 @@
 			$this->load->model('admin/event_model');
 			// $this->load->library('upload', $config);
 			$nama = $_POST['nama'];
-		    $waktu = $_POST['reservationtime'];
-		    // $lat = $_POST['lat'];
-		    // $lang = $_POST['lang'];
-		    // // $animals = array('--Select Animal--', 'Cat', 'Dog', 'Cow');
+		
 			$kota = $_POST['kota'];
 			$negara = $_POST['negara'];
-			$tipe = $_POST['tipe'];
+			$tipe = "Training";
 			$link = $_POST['link'];
 			
 			$data = array(); 
 			$data = (explode(" ",$waktu));
-			// print_r((explode(" ",$waktu)));
-			// Array ( [0] => 03/05/2016 [1] => 00:00 [2] => [3] => - [4] => 03/05/2016 [5] => 23:59 [6] => )
-			
+		
 			$tanggal_awal = $data[0];
 			$tanggal_akhir = $data[4];
 			$jam_awal = $data[1];
 			$jam_akhir = $data[5];
 			
 			
-			$masukkan_event = $this->event_model->masuk_event($nama,$pie[0],$pie[1],$kota,$negara,$tanggal_awal,$tanggal_akhir,$jam_awal,$jam_akhir,$tipe,$link,$gab);
-			if($masukkan_event == 1 && $flag_upload == 1 && $tipe == 'Training'){
-				redirect('admin/event/indextraining');
-			}
-			else if($masukkan_event == 1 && $flag_upload == 1){
-				redirect('admin/event');
+			$masukkan_training = $this->event_model->masuk_event($nama,$pie[0],$pie[1],$kota,$negara,$tanggal_awal,$tanggal_akhir,$jam_awal,$jam_akhir,$tipe,$link,$gab);
+			if($masukkan_training == 1 && $flag_upload == 1){
+				redirect('admin/training');
 			}	
 
 		}
 
-		public function updateviewevent($id=NULL){
+		public function updateviewetraining($id=NULL){
 			$this->load->model('admin/event_model');
 			$get_data_news = $this->event_model->get_data_event($id);
 			$data = $get_data_news->row_array();
@@ -234,11 +172,11 @@
 			// $data['negara'] = $this->event_model->getAllNegara();
 			// $data['kota'] = $this->event_model->getAllKota();
 			$this->load->view('admin/header_topbar');
-			$this->load->view('admin/update_event_view', $data);
+			$this->load->view('admin/update_training_view', $data);
 			$this->load->view('admin/footer');
 		}
 
-		public function updateevent(){
+		public function updatetraining(){
 
 			if($_FILES['userfile']['name'] == NULL){
 				
@@ -260,7 +198,7 @@
 			   
 				$kota = $_POST['kota'];
 				$negara = $_POST['negara'];
-				$tipe = $_POST['tipe'];
+				$tipe = "Training";
 				$link = $_POST['link'];
 				$id = $_POST['id'];
 				
@@ -274,9 +212,9 @@
 
 				// print_r($pie);
 				
-				$masukkan_event = $this->event_model->update_without_event($id,$nama,$pie[0],$pie[1],$kota,$negara,$tanggal_awal,$tanggal_akhir,$jam_awal,$jam_akhir,$tipe,$link);
-				if($masukkan_event == 1){
-					redirect('admin/event');
+				$masukkan_training = $this->event_model->update_without_training($id,$nama,$pie[0],$pie[1],$kota,$negara,$tanggal_awal,$tanggal_akhir,$jam_awal,$jam_akhir,$tipe,$link);
+				if($masukkan_training == 1){
+					redirect('admin/training');
 				}	
 			}
 			else{
@@ -332,7 +270,7 @@
 			    // // $animals = array('--Select Animal--', 'Cat', 'Dog', 'Cow');
 				$kota = $_POST['kota'];
 				$negara = $_POST['negara'];
-				$tipe = $_POST['tipe'];
+				$tipe = "Training";
 				$link = $_POST['link'];
 				$id = $_POST['id'];
 				
@@ -347,13 +285,11 @@
 				$jam_akhir = $data[5];
 				
 				
-				$masukkan_event = $this->event_model->update_with_event($id,$nama,$pie[0],$pie[1],$kota,$negara,$tanggal_awal,$tanggal_akhir,$jam_awal,$jam_akhir,$tipe,$link,$gab);
-				if($masukkan_event == 1 && $flag_upload == 1){
-					redirect('admin/event');
+				$masukkan_training = $this->event_model->update_with_training($id,$nama,$pie[0],$pie[1],$kota,$negara,$tanggal_awal,$tanggal_akhir,$jam_awal,$jam_akhir,$tipe,$link,$gab);
+				if($masukkan_training == 1 && $flag_upload == 1){
+					redirect('admin/training');
 				}	
 			}
 		}
-
-
 	}
  ?>

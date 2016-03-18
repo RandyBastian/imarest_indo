@@ -53,5 +53,29 @@
 			$jTableResult['Record'] = $rows;
 			print json_encode($jTableResult);
 		}
+
+		public function updatehalaman(){
+			$this->load->model('admin/halaman_model');
+			$id = $this->input->post('id_halaman');
+			$judul = $this->input->post('judul_halaman');
+			$isi = $this->input->post('isi_halaman');
+
+			$result = $this->halaman_model->post_update_halaman($id,$judul,$isi);
+
+			$jTableResult = array();
+			$jTableResult['Result'] = "OK";
+			print json_encode($jTableResult);
+		}
+
+		public function hapushalaman(){
+			$this->load->model('admin/halaman_model');
+			$id = $this->input->post('id_halaman');
+
+			$result = $this->halaman_model->post_delete_halaman($id);
+
+			$jTableResult = array();
+			$jTableResult['Result'] = "OK";
+			print json_encode($jTableResult);
+		}
 	}
  ?>

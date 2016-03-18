@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Top Navigation</title>
+    <title>Admin Imarest Indonesia</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -53,7 +53,7 @@
         <nav class="navbar navbar-static-top">
           <div class="container">
             <div class="navbar-header">
-              <a href="#" class="navbar-brand"><b>Admin</b>LTE</a>
+              <a href="#" class="navbar-brand"><b>Admin</b></a>
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                 <i class="fa fa-bars"></i>
               </button>
@@ -63,35 +63,38 @@
             <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
               <ul class="nav navbar-nav">
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tambah Item <span class="caret"></span></a>
+                  <a href="<?=site_url("admin/news")?>">News</a>
+                </li>
+                <li class="dropdown">
+                  <a href="<?=site_url("admin/halaman")?>">Halaman</a>
+                </li>
+                <li class="dropdown">
+                  <a href="<?=site_url("admin/careers")?>">Careers</a>
+                </li>
+                <li class="dropdown">
+                  <a href="<?=site_url("admin/faq")?>" >FAQ</a>
+                </li>
+                <li class="dropdown">
+                    <a href="<?=site_url("admin/kontak")?>">Kontak</a>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Event, Course, and Training<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="<?=site_url("admin/event")?>">Event</a></li>
-                    <li><a href="<?=site_url("admin/halaman")?>">Halaman</a></li>
-                    <li><a href="<?=site_url("admin/faq")?>">FAQ</a></li>
-                    <li><a href="<?=site_url("admin/kontak")?>">Kontak</a></li>
+                    <li><a href="<?=site_url("admin/event")?>">Event and Course</a></li>
+                    <li><a href="<?=site_url("admin/training")?>">Training</a></li>
                     <li><a href="<?=site_url("admin/Negara")?>">Negara</a></li>
                     <li><a href="<?=site_url("admin/Kota")?>">Kota</a></li>
-                    <li><a href="<?=site_url("admin/Resource")?>">Resource</a></li>
                   </ul>
                 </li>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Upload<span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Galeri<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="<?=site_url("admin/Upload")?>">Galeri</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">One more separated link</a></li>
+                    <li><a href="<?=site_url("admin/Upload")?>">Foto</a></li>
+                    <li><a href="<?=site_url("admin/video")?>">Video</a></li>
                   </ul>
+                  
                 </li>
               </ul>
-              <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
-                </div>
-              </form>
             </div><!-- /.navbar-collapse -->
             <!-- Navbar Right Menu -->
               <div class="navbar-custom-menu">
@@ -111,7 +114,6 @@
                         <img src="<?php echo base_url() ?>assets/admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                         <p>
                           Admin
-                          <small>Member since Nov. 2012</small>
                         </p>
                       </li>
                       <!-- Menu Body -->

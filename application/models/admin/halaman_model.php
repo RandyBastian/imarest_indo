@@ -20,5 +20,13 @@
 		function get_create_halaman(){
 			return $this->db->query("SELECT * FROM halaman WHERE halaman.id_halaman = LAST_INSERT_ID();");
 		}
+
+		function post_update_halaman($id,$judul,$isi){
+			return $this->db->query("UPDATE halaman SET halaman.judul_halaman = '".$judul."', halaman.isi_halaman = '".$isi."' WHERE halaman.id_halaman = '".$id."';");
+		}
+
+		function post_delete_halaman($id){
+			return $this->db->query("DELETE FROM halaman WHERE halaman.id_halaman = '".$id."'; ");	
+		}
 	}
  ?>

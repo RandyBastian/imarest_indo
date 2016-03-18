@@ -192,7 +192,6 @@
 		                if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png') {
 		                    if ($start <= $this->data['total'] && $this->data['total'] < $finish) {
 		                        $nama[0]['letak_folder']."/".$this->data['images'][$i]['thumb'] = $file;
-		                        print_r($nama[0]['letak_folder']."/".$this->data['images'][$i]['thumb']);
 		                        $nama[0]['letak_folder']."/".$this->data['images'][$i]['original'] = str_replace('thumb_', '', $file);
 		                        $i++;
 		                    }

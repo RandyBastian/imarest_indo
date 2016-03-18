@@ -22,7 +22,7 @@
 		}
 
 		function post_update_kontak($id,$nama,$telp,$email){
-			return $this->db->query("UPDATE contact SET contact.nama_contact = '".$nama."', contact.telp_contact = '".$telp."', contact.email_contact = '".$email."' WHERE contact.id_contact = '".$telp."' = '".$id."';");
+			return $this->db->query("UPDATE contact SET contact.nama_contact = '".$nama."', contact.telp_contact = '".$telp."', contact.email_contact = '".$email."' WHERE contact.id_contact ='".$id."';");
 		}
 
 		function post_delete_kontak($id){

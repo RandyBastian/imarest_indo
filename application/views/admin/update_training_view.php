@@ -8,35 +8,40 @@
       <div class="box-header with-border">
         <h3 class="box-title">Horizontal Form</h3>
       </div>
-      <form class="form-horizontal" id="myform" method="POST" action="<?php echo site_url("admin/event/createnew");?>" enctype="multipart/form-data">
+      <form class="form-horizontal" id="myform" method="POST" action="<?php echo site_url("admin/training/updatetraining");?>" enctype="multipart/form-data">
         <div class="box-body">
           <div class="form-group">
-            <label class="col-sm-2 control-label">Nama Event</label>
+            <label class="col-sm-2 control-label">Nama Training</label>
             <div class="col-sm-6">
-              <input type="text" class="form-control" id="nama" name="nama" placeholder="nama">
+              <input type="text" class="form-control" id="nama" name="nama" placeholder="nama" value="<?php echo $nama_event?>" >
+              <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $id_event?>" >
+              <input type="hidden" class="form-control" id="lat" name="lat" value="<?php echo $lat_event?>" >
+              <input type="hidden" class="form-control" id="lang" name="lang" value="<?php echo $lang_event?>" >
             </div>
           </div>
-          <h3 class="box-title">Waktu event</h3>
+          <h3 class="box-title">Waktu Training</h3>
+         
           <div class="form-group">
-            <label class="col-sm-2 control-label">Rentang Waktu Event</label>
+            <label class="col-sm-2 control-label">Rentang Waktu Training</label>
               <div class="col-sm-6"> 
                 <div class="input-group">
                   <div class="input-group-addon">
                     <i class="fa fa-clock-o"></i>
                   </div>
-                  <input type="text" class="form-control" id="reservationtime" name="reservationtime" >
+                  <input type="text" class="form-control" id="reservationtime" name="reservationtime" value="<?php echo $baru?>" >
                 </div>
               </div>
           </div>
-          <h3 class="box-title">Lokasi event</h3>
+          <h3 class="box-title">Lokasi Training</h3>
           <div class="form-group">
             <label class="col-sm-2 control-label">Kota</label>
             <div class="col-sm-6">
-                <select id="kota" name="kota" class="form-control select2" style="width: 100%;">
+                <select id="kota" name="kota" class="form-control select2" style="width: 100%;" >
                   <?php 
                         foreach($kota as $row)
-                        { 
-                          echo '<option value="'.$row->id_kota.'">'.$row->nama_kota.'</option>';
+                        {
+                          ?><option <?php if ($row->id_kota == $id_kota_event) {?>selected="selected" <?php }?> value = "<?php echo $row->id_kota ?>"> <?php echo "$row->nama_kota"?> </option><?php
+  
                         }
                     ?>
                 </select>
@@ -45,11 +50,11 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">Negara</label>
             <div class="col-sm-6">
-                <select class="form-control select2" style="width: 100%" id="negara" name="negara">
+                <select class="form-control select2" style="width: 100%" id="negara" name="negara" >
                     <?php 
                         foreach($negara as $row)
                         { 
-                          echo '<option value="'.$row->id_negara.'">'.$row->nama_negara.'</option>';
+                          ?><option <?php if ($row->id_negara == $id_negara_event) {?>selected="selected" <?php }?> value= "<?php echo $row->id_negara ?>"> <?php echo "$row->nama_negara"?> </option><?php
                         }
                     ?>
                 </select>
@@ -69,12 +74,15 @@
           </div>
         </div>
         <script>
+        var lat = "<?php echo $lat_event; ?>";
+          var lang = "<?php echo $lang_event; ?>";
           var map = L.map('map').setView([0.27, 115.81], 5);
           ACCESS_TOKEN = 'pk.eyJ1IjoibGlkb2tyaSIsImEiOiJjaWxweHNleDgwOGxodXpseTlzYjBkYzduIn0.zvZZfUYRA_verztcO7xv8w';
           L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + ACCESS_TOKEN, {
               attribution: 'Imagery © <a href="http://mapbox.com">Mapbox</a>',
               id: 'mapbox.streets'
           }).addTo(map);
+         marker = new L.marker([lat,lang]).addTo(map);
          
           var popup = L.popup();
           // var latlang;
@@ -100,23 +108,23 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">Tipe Event</label>
             <div class="col-sm-6">
-                <select class="form-control select2" style="width: 100%;" id="tipe" name="tipe">
-                  <option value="Course">Course</option>
-                  <option value="Confrence">Confrence</option>
+                <select class="form-control select2" style="width: 100%;" id="tipe" name="tipe" value=<?php echo $tipe_event?>>
+                  <option value="Training">Training</option>
                 </select>
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">Link Pendaftaran</label>
             <div class="col-sm-6">
-              <input type="text" class="form-control" id="link" name="link" placeholder="Link">
+              <input type="text" class="form-control" id="link" name="link" placeholder="Link" value=<?php echo $register_event?>>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-sm-2 control-label">Gambar Event</label>
+            <label class="col-sm-2 control-label">Gambar Training</label>
             <div class="col-sm-6">
               <input type="file" name="userfile"  />
+              <img class='img-responsive' src='<?php echo base_url() ?>assets/gambar/event/<?php echo $nama;?>' alt='Photo'>
             </div>
           </div>
           
@@ -128,7 +136,7 @@
             </div>
           </div> -->
           <div class="box-footer mid">
-            <a href="<?=site_url("admin/event")?>"><button type="button" class="btn btn-default">Cancel</button></a>
+            <a href="<?=site_url("admin/event/indextraining")?>"><button type="button" class="btn btn-default">Cancel</button></a>
             <button type="submit" class="btn btn-info right"  >Submit</button>
           </div>
         </div>

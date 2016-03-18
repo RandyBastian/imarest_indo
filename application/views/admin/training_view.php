@@ -16,7 +16,7 @@
     <!-- Main content -->
     <section class="content">
       <span class="input-group-btn">
-        <a href="<?=site_url("admin/event/tambah")?>"><button type="button" class="btn btn-primary btn-flat">Add new record</button></a>
+        <a href="<?=site_url("admin/training/tambah")?>"><button type="button" class="btn btn-primary btn-flat">Add new record</button></a>
       </span>
 
       <div id="PeopleTableContainer"></div>
@@ -33,7 +33,7 @@
                   defaultSorting: 'nomer ASC',
                   actions: 
                   {
-                       listAction: '<?=base_url()?>index.php/admin/event/listevent'
+                       listAction: '<?=base_url()?>index.php/admin/event/listtraining'
                        // createAction: '<?=base_url()?>index.php/antriandokter/listantrian'              
                   },
                   fields: 
@@ -62,12 +62,12 @@
                       id_kota_event: 
                       {
                           title: 'Kota',
-                          options: 'event/get_kota'                          
+                          options: 'training/get_kota'                          
                       },
                       id_negara_event: 
                       {
                           title: 'Negara',
-                          options: 'event/get_negara'                        
+                          options: 'training/get_negara'                        
                       },
                       tanggal_mulai_event: 
                       {
@@ -108,7 +108,7 @@
                           title: 'Edit',
                           display: function (data) 
                           {
-                              return '<a href="<?php echo site_url() ?>admin/event/updateviewevent/'+ data.record.id_event +'">Edit</a>';
+                              return '<a href="<?php echo site_url() ?>admin/training/updateviewetraining/'+ data.record.id_event +'">Edit</a>';
                           },
                           edit: false,
                           sorting: false,
