@@ -26,7 +26,10 @@
               <input type="file" name="userfile"  />
             </div>
           </div>
-          
+           <td>Maksimal Ukuran Gambar adalah 1 MB. jika gambar memiliki ukuran melebihi dari itu</td>
+            <td>maka akan gagal upload. jika melebihi gambar harus dikecilkan. berikut link untuk mengecilkan </td>
+            gambar
+            <td><a href="https://imageresizer.codeplex.com/">Link</a></td>
           <!-- <div class="form-group">
             <div class="col-sm-6 col-md-offset-2">
               <input type="radio" name="action" id="track" value="track" /><label for="track">Tidak ada</label><br />
