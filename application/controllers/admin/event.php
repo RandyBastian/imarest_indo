@@ -5,11 +5,25 @@
 	class Event extends CI_Controller
 	{
 		
+		
+		private $data = array(
+		    'dir' => array(
+		        'original' => 'assets/gambar/galeri/',
+		        'thumb' => 'assets/gambar/thumbs/'
+		    ),
+		    'total' => 0,
+		    'images' => array(),
+		    'error' => '',
+		    'id' => '',
+		    'letak' => ''
+		);
+
 		function __construct()
 		{
 			parent::__construct();
 			$this->load->helper(array('form', 'url'));
 	    	$this->load->library('form_validation');
+	    	$this->load->helper('date');
 		}
 
 		public function index(){
@@ -141,25 +155,32 @@
 
 		public function createnew(){
 	    	
+	    	$this->load->helper('date');
 
 			$config['upload_path']    = './assets/gambar/event/';
 			$config['allowed_types']  = 'gif|jpg|png|jpeg';
             $config['overwrite']       = TRUE;
             $config['max_size']        = '1000000';  // Can be set to particular file size
             $config['max_height']      = '768';
-            $config['max_width']       = '1024'; 
+            $config['max_width']       = '1024';
+            $new_name = now();
+			$config['file_name'] = $new_name; 
 
 			$this->load->library('upload',$config);
 			$this->upload->initialize($config);
 			$fileName = $_FILES['userfile'];
 			
 
+			// rename
+			// move_uploaded_file
+
+
 			$data_upload_files = $this->upload->data();
 
 	        $image = $data_upload_files['full_path'];	
 
 	        
-	        $gab = $image.$fileName['name'];
+	        $gab = $image;
 	        
 			// $image = 'image.jpg'; 
 		    // $directory = '/path/to/image'; 
@@ -280,12 +301,15 @@
 				}	
 			}
 			else{
+				$this->load->helper('date');
 				$config['upload_path']    = './assets/gambar/event/';
 				$config['allowed_types']  = 'gif|jpg|png|jpeg';
 	            $config['overwrite']       = TRUE;
 	            $config['max_size']        = '1000000';  // Can be set to particular file size
 	            $config['max_height']      = '768';
-	            $config['max_width']       = '1024'; 
+	            $config['max_width']       = '1024';
+	             $new_name 				   = now();
+			$config['file_name'] 	   = $new_name;  
 
 				$this->load->library('upload',$config);
 				$this->upload->initialize($config);
@@ -297,7 +321,7 @@
 		        $image = $data_upload_files['full_path'];	
 
 		        
-		        $gab = $image.$fileName['name'];
+		        $gab = $image;
 		        
 				// $image = 'image.jpg'; 
 			    // $directory = '/path/to/image'; 
@@ -352,6 +376,24 @@
 					redirect('admin/event');
 				}	
 			}
+		}
+
+		 public function hapusevent(){
+		    $this->load->model('admin/event_model');
+		    $id = $this->input->post('id_event');
+		    $get_data_news = $this->event_model->get_data_event($id);
+			$data = $get_data_news->row_array();
+
+			$string = str_replace('./a', 'a', $data['pic_event']);
+			 // ./assets/gambar/event/
+
+			unlink($string);
+		   
+		    $result = $this->event_model->post_delete_event($id);
+
+		    $jTableResult = array();
+		    $jTableResult['Result'] = "OK";
+		    print json_encode($jTableResult);
 		}
 
 

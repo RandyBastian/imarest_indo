@@ -30,5 +30,9 @@
 		function update_news($id,$judul,$isi){
 			return $this->db->query("UPDATE news SET news.judul_news = '".$judul."', news.isi_news = '".$isi."' WHERE news.id_news = '".$id."';");
 		}
+
+		function post_delete_news($id){
+			return $this->db->query("DELETE FROM news WHERE news.id_news = '".$id."'; ");	
+		}
 	}
  ?>

@@ -72,5 +72,9 @@
 			return $this->db->query("UPDATE event SET event.nama_event = '".$nama."', event.lat_event = '".$lat."',  event.lang_event = '".$lang."', event.id_kota_event = '".$kota."', event.id_negara_event = '".$negara."', event.tanggal_mulai_event= '".$tanggal_awal."',event.tanggal_akhir_event= '".$tanggal_akhir."',event.jam_mulai_event= '".$jam_awal."', event.jam_akhir_event='".$jam_akhir."',event.tipe_event='".$tipe."',event.register_event = '".$link."', event.pic_event = '".$gab."' WHERE event.id_event = '".$id."';");
 		}
 
+		function post_delete_event($id){
+			return $this->db->query("DELETE FROM event WHERE event.id_event = '".$id."'; ");	
+		}
+
 	}
  ?>

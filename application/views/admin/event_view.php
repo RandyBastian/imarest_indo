@@ -33,7 +33,8 @@
                   defaultSorting: 'nomer ASC',
                   actions: 
                   {
-                       listAction: '<?=base_url()?>index.php/admin/event/listevent'
+                       listAction: '<?=base_url()?>index.php/admin/event/listevent',
+                      deleteAction: '<?=base_url()?>index.php/admin/event/hapusevent'
                        // createAction: '<?=base_url()?>index.php/antriandokter/listantrian'              
                   },
                   fields: 

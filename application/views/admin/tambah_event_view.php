@@ -101,7 +101,7 @@
             <label class="col-sm-2 control-label">Tipe Event</label>
             <div class="col-sm-6">
                 <select class="form-control select2" style="width: 100%;" id="tipe" name="tipe">
-                  <option value="Course">Course</option>
+                  <option value="Event">Event</option>
                   <option value="Confrence">Confrence</option>
                 </select>
             </div>

@@ -5,10 +5,7 @@
 	class Upload extends CI_Controller
 	{
 		
-		// function __construct(argument)
-		// {
-		// 	# code...
-		// }
+		
 
 		private $data = array(
 		    'dir' => array(
@@ -21,6 +18,14 @@
 		    'id' => '',
 		    'letak' => ''
 		);
+
+		function __construct()
+		{
+			parent::__construct();
+			$this->load->helper(array('form', 'url'));
+	    	$this->load->library('form_validation');
+	    	$this->load->helper('date');
+		}
 
 		public function index(){
 			$this->load->view('admin/header_topbar');
@@ -52,6 +57,7 @@
 
 
 	    public function createupload(){
+	      
 	      $this->load->model('admin/upload_model');
 	      // $id = $this->input->post('no');
 	      $this->load->helper('date');
@@ -62,9 +68,9 @@
 
 	      $string = str_replace(' ', '-', $nama); // Replaces all spaces with hyphens.
 
-   		  $nama = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars
+   		  $name = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars
 
-	      $dir = $date.$nama;
+	      $dir = now().$name;
 
 	      mkdir('./assets/gambar/galeri/'.$dir, 0777, true);
 	      mkdir('./assets/gambar/thumbs/'.$dir, 0777, true);
@@ -94,26 +100,40 @@
 	    
 
 	    public function hapusupload(){
+	      $this->load->helper("file");
 	      $this->load->model('admin/upload_model');
 	      $id = $this->input->post('id_galeri');
 
-	      $result = $this->upload_model->post_delete_upload($id);
+	      $data = $this->upload_model->cari_folder($id);
+	      $nama = $data->result_array();
 
-	      $jTableResult = array();
-	      $jTableResult['Result'] = "OK";
-	      print json_encode($jTableResult);
+	      
+	      $path= '/assets/gambar/galeri/'.$nama[0]['letak_folder'];
+	      // unlink(base_url("assets/gambar/galeri/14584095692016-03-19qwe/"));
+	      echo $path;
+		   // load the helper
+		  delete_files($path, true); // delete all files/folders
+
+	      // $result = $this->upload_model->post_delete_upload($id);
+
+	      // $jTableResult = array();
+	      // $jTableResult['Result'] = "OK";
+	      // print json_encode($jTableResult);
 	    }
 
 	    public function upload_foto($letak)
 		{
-		    $fileName = $_FILES['userfile'];
+		    $this->load->helper('date');
+		    // $fileName = $_FILES['userfile'];
 
 			$config['upload_path']    = $this->data['dir']['original'].$letak."/";
 			$config['allowed_types']  = 'gif|jpg|png|jpeg';
             $config['overwrite']       = TRUE;
             $config['max_size']        = '1000000';  // Can be set to particular file size
             $config['max_height']      = '768';
-            $config['max_width']       = '1024'; 
+            $config['max_width']       = '1024';
+            $new_name 				   = now();
+			$config['file_name'] 	   = $new_name; 
 
 			$this->load->library('upload',$config);
 			$this->upload->initialize($config);

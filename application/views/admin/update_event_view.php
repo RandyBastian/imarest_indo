@@ -110,7 +110,7 @@
             <div class="col-sm-6">
                 <select class="form-control select2" style="width: 100%;" id="tipe" name="tipe" value=<?php echo $tipe_event;?>>
                   <!-- <option value="IT"  >Information Technology</option> -->
-                  <option value="Course" <?php if ($tipe_event == "Course") echo "selected='selected'";?>>Course</option>
+                  <option value="Event" <?php if ($tipe_event == "Event") echo "selected='selected'";?>>Course</option>
                   <option value="Confrence" <?php if ($tipe_event == "Confrence") echo "selected='selected'";?>>Confrence</option>
                 </select>
             </div>

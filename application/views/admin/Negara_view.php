@@ -30,7 +30,7 @@
 
               //Prepare jTable
               $('#PeopleTableContainer').jtable({
-                  title: 'Tabel Kota',
+                  title: 'Tabel Negara',
                   paging: true,
                   pageSize: 10,
                   sorting: true,
@@ -52,8 +52,7 @@
                       },
                       nama_negara: 
                       {
-                          title: 'Nama Negara',
-                          type: 'textarea'
+                          title: 'Nama Negara'
                       }
                   }
               });

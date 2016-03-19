@@ -175,6 +175,17 @@
 				
 		}
 
+		public function hapusnews(){
+	      $this->load->model('admin/news_model');
+	      $id = $this->input->post('id_news');
+
+	      $result = $this->news_model->post_delete_news($id);
+
+	      $jTableResult = array();
+	      $jTableResult['Result'] = "OK";
+	      print json_encode($jTableResult);
+	    }
+
 
 	}
  ?>

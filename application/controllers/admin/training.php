@@ -10,6 +10,7 @@
 			parent::__construct();
 			$this->load->helper(array('form', 'url'));
 	    	$this->load->library('form_validation');
+	    	$this->load->helper('date');
 		}
 
 		public function index(){
@@ -96,7 +97,9 @@
             $config['overwrite']       = TRUE;
             $config['max_size']        = '1000000';  // Can be set to particular file size
             $config['max_height']      = '768';
-            $config['max_width']       = '1024'; 
+            $config['max_width']       = '1024';
+            $new_name 				   = now();
+			$config['file_name'] 	   = $new_name; 
 
 			$this->load->library('upload',$config);
 			$this->upload->initialize($config);
@@ -108,7 +111,7 @@
 	        $image = $data_upload_files['full_path'];	
 
 	        
-	        $gab = $image.$fileName['name'];
+	        $gab = $image;
 	     
 		    			
 			if(! $this->upload->do_upload('userfile')){
@@ -167,6 +170,18 @@
 			$this->tampilanupdate($data);
 		}
 
+		public function hapusevent(){
+		      $this->load->model('admin/event_model');
+		      $id = $this->input->post('id_event');
+
+		      $result = $this->event_model->post_delete_event($id);
+
+		      $jTableResult = array();
+		      $jTableResult['Result'] = "OK";
+		      print json_encode($jTableResult);
+		    }
+
+
 		public function tampilanupdate($data){
 			// $this->load->model('admin/event_model');
 			// $data['negara'] = $this->event_model->getAllNegara();
@@ -223,7 +238,9 @@
 	            $config['overwrite']       = TRUE;
 	            $config['max_size']        = '1000000';  // Can be set to particular file size
 	            $config['max_height']      = '768';
-	            $config['max_width']       = '1024'; 
+	            $config['max_width']       = '1024';
+	            $new_name 				   = now();
+				$config['file_name'] 	   = $new_name;  
 
 				$this->load->library('upload',$config);
 				$this->upload->initialize($config);
@@ -235,7 +252,7 @@
 		        $image = $data_upload_files['full_path'];	
 
 		        
-		        $gab = $image.$fileName['name'];
+		        $gab = $image;
 		        
 				// $image = 'image.jpg'; 
 			    // $directory = '/path/to/image'; 

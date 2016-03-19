@@ -80,7 +80,7 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Event, Course, and Training<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="<?=site_url("admin/event")?>">Event and Course</a></li>
+                    <li><a href="<?=site_url("admin/event")?>">Event and Confrence</a></li>
                     <li><a href="<?=site_url("admin/training")?>">Training</a></li>
                     <li><a href="<?=site_url("admin/Negara")?>">Negara</a></li>
                     <li><a href="<?=site_url("admin/Kota")?>">Kota</a></li>

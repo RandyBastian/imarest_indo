@@ -39,7 +39,7 @@
                   {
                        listAction: '<?=base_url()?>index.php/admin/careers/listcareers',
                        updateAction: '<?=base_url()?>index.php/admin/careers/updatecareers',
-                       // deleteAction:'<?=base_url()?>index.php/admin/careers/hapuscareers',
+                       deleteAction:'<?=base_url()?>index.php/admin/careers/hapuscareers',
                        createAction: function (postData) {
                             // window.location = '<?=base_url()?>index.php/listobat/lihatobat/';
                             console.log("creating from custom function...");
