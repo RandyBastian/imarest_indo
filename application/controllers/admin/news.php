@@ -49,25 +49,25 @@
 		    			
 			if(! $this->upload->do_upload('userfile')){
 				$upload_error = array('error' => $this->upload->display_errors());
-				print_r($upload_error);
-				
+				echo "<script>
+					alert('Gambar yang anda upload tidak sesuai dengan persyaratan, silahkan dilakukan pengecekan ukuran gambar');
+					window.location.href='" . base_url() . "admin/news/tambah';
+					</script>";
 			}
 			if( $this->upload->do_upload('userfile')){
 				$flag_upload = 1;
-			}
-			
-			$this->load->model('admin/news_model');
-			// $this->load->library('upload', $config);
-			$judul = $_POST['judul'];
-		    $isi = $_POST['isi'];
-		    
-		    		
-			
-			$masukkan_news = $this->news_model->tambah_news($judul,$isi,$gab);
-			if($masukkan_news == 1 && $flag_upload == 1){
-				redirect('admin/news');
-			}	
-
+				$this->load->model('admin/news_model');
+				// $this->load->library('upload', $config);
+				$judul = $_POST['judul'];
+			    $isi = $_POST['isi'];
+			    
+			    		
+				
+				$masukkan_news = $this->news_model->tambah_news($judul,$isi,$gab);
+				if($masukkan_news == 1 && $flag_upload == 1){
+					redirect('admin/news');
+				}
+			}			
 		}
 
 		public function listnews(){
@@ -127,6 +127,9 @@
 				}
 			}
 			else{
+				$judul = $_POST['judul'];
+			    $isi = $_POST['isi'];
+			    $id = $_POST['id'];
 				$fileName = $_FILES['userfile'];
 			
 				$config['upload_path']    = './assets/gambar/news/';
@@ -152,22 +155,24 @@
 			    			
 				if(! $this->upload->do_upload('userfile')){
 					$upload_error = array('error' => $this->upload->display_errors());
-					print_r($upload_error);
+					echo "<script>
+					window.location.href='" . base_url() . "admin/news/updateviewnews/".$id."';
+					alert('Gambar yang anda upload tidak sesuai dengan persyaratan, silahkan dilakukan pengecekan ukuran gambar');
+					</script>";
 					
 				}
 				if( $this->upload->do_upload('userfile')){
 					$flag_upload = 1;
-				}	
-				$this->load->model('admin/news_model');
+					$this->load->model('admin/news_model');
 			// $this->load->library('upload', $config);
-				$judul = $_POST['judul'];
-			    $isi = $_POST['isi'];
-			    $id = $_POST['id'];
-			    
-				$masukkan_news = $this->news_model->update_wtihpic_news($id,$judul,$isi,$gab);
-				if($masukkan_news == 1 && $flag_upload == 1){
-					redirect('admin/news');
-				}
+				
+				    
+					$masukkan_news = $this->news_model->update_wtihpic_news($id,$judul,$isi,$gab);
+					if($masukkan_news == 1 && $flag_upload == 1){
+						redirect('admin/news');
+					}
+				}	
+				
 			}
 
 

@@ -1,8 +1,3 @@
-<link id="bootstrap-style" href="<?php echo base_url() ?>assets/admin/galeri/css/bootstrap.min.css" rel="stylesheet">
-<link href="<?php echo base_url() ?>assets/admin/galeri/css/bootstrap-responsive.min.css" rel="stylesheet">
-<link id="base-style" href="<?php echo base_url() ?>assets/admin/galeri/css/style.css" rel="stylesheet">
-<link id="base-style-responsive" href="<?php echo base_url() ?>assets/admin/galeri/css/style-responsive.css" rel="stylesheet">
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
 
 <script type="text/javascript">
     function changepic(img_src, obj) {
@@ -138,33 +133,21 @@
         </a>
         <?php } ?>
     </div> -->
-    <style>
-        #coba { color: white; }
-    </style>
-    <!-- <div class="masonry-gallery"> -->
-   
-       
-
-        <div class="clear"></div>
-
-        
-        <!-- Looping Array Image -->
-        <?php foreach($images as $key => $img) { ?>
-        
-            <div>
-                <a href="javascript:" onclick="changepic('<?php echo base_url().$dir['original'].$letak."/".$img['original']; ?>', 'thumb_<?php echo $key; ?>');">
-                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"></li><img class="img-responsive" alt="Responsive Photo Galeri" name="thumb" id="thumb_<?php echo $key; ?>" src="<?php echo base_url().$dir['thumb'].$letak."/".$img['thumb']; ?>"/>
-                </a>
-            </div>
-            <div class="dadel">
-            <a class="adel" href="<?php echo site_url('admin/Upload/delete/'.$letak.'/'.$img['original'].'/'. $id); ?>">
-                delete
-            </a>
-            </div>
-        
-        <?php } ?>
-       
-        <div class="clear"></div>
+         <!-- Looping Array Image -->
+        <div class="container" >
+            <ul class="row">
+                <?php foreach($images as $key => $img) { ?>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img class="img-responsive" alt="Responsive Photo Galeri" name="thumb" id="thumb_<?php echo $key; ?>" src="<?php echo base_url().$dir['thumb'].$letak."/".$img['thumb']; ?>"/>
+                    <div>
+                        <a href="<?php echo site_url('admin/Upload/delete/'.$letak.'/'.$img['original'].'/'. $id); ?>">
+                            delete
+                        </a>
+                    </div>
+                </li>
+                <?php } ?>
+            </ul>                
+        </div>
+      
 
         <div class="bottom">
             <?php echo $total; ?> Image(s)
@@ -177,11 +160,11 @@
             <input name="userfile" type="file" size="20"/>
             <input type="submit" name="btn_upload" value="Upload &uarr;" class="btnupload"/>
             <?php if (isset ($error)) { ?>
-            <div class="error"><?php echo $error; ?></div>
+                <div class="error"><?php echo $error; ?></div>
             <?php } ?>
         </form>
     
 
-    <div class="clear"></div>
+   
 
 </div> <!-- end div container -->

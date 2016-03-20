@@ -116,39 +116,42 @@
 		    			
 			if(! $this->upload->do_upload('userfile')){
 				$upload_error = array('error' => $this->upload->display_errors());
-				// echo $config['upload_path'];
-				print_r($upload_error);
+				echo "<script>
+					alert('Gambar yang anda upload tidak sesuai dengan persyaratan, silahkan dilakukan pengecekan ukuran gambar');
+					window.location.href='" . base_url() . "admin/training/tambah';
+					</script>";
 				
 			}
 			if( $this->upload->do_upload('userfile')){
 				$flag_upload = 1;
+				$pos=$_POST['latlang'];
+				$pis = preg_replace("/[^0-9,.,-]/", "",$pos);
+				$pie = explode(",", $pis);
+				
+				$this->load->model('admin/event_model');
+				// $this->load->library('upload', $config);
+				$nama = $_POST['nama'];
+			
+				$kota = $_POST['kota'];
+				$negara = $_POST['negara'];
+				$tipe = "Training";
+				$link = $_POST['link'];
+				
+				$data = array(); 
+				$data = (explode(" ",$waktu));
+			
+				$tanggal_awal = $data[0];
+				$tanggal_akhir = $data[4];
+				$jam_awal = $data[1];
+				$jam_akhir = $data[5];
+				
+				
+				$masukkan_training = $this->event_model->masuk_event($nama,$pie[0],$pie[1],$kota,$negara,$tanggal_awal,$tanggal_akhir,$jam_awal,$jam_akhir,$tipe,$link,$gab);
+				if($masukkan_training == 1 && $flag_upload == 1){
+					redirect('admin/training');
+				}	
 			}
-			$pos=$_POST['latlang'];
-			$pis = preg_replace("/[^0-9,.,-]/", "",$pos);
-			$pie = explode(",", $pis);
-			
-			$this->load->model('admin/event_model');
-			// $this->load->library('upload', $config);
-			$nama = $_POST['nama'];
-		
-			$kota = $_POST['kota'];
-			$negara = $_POST['negara'];
-			$tipe = "Training";
-			$link = $_POST['link'];
-			
-			$data = array(); 
-			$data = (explode(" ",$waktu));
-		
-			$tanggal_awal = $data[0];
-			$tanggal_akhir = $data[4];
-			$jam_awal = $data[1];
-			$jam_akhir = $data[5];
-			
-			
-			$masukkan_training = $this->event_model->masuk_event($nama,$pie[0],$pie[1],$kota,$negara,$tanggal_awal,$tanggal_akhir,$jam_awal,$jam_akhir,$tipe,$link,$gab);
-			if($masukkan_training == 1 && $flag_upload == 1){
-				redirect('admin/training');
-			}	
+				
 
 		}
 
@@ -233,6 +236,7 @@
 				}	
 			}
 			else{
+				$id = $_POST['id'];
 				$config['upload_path']    = './assets/gambar/event/';
 				$config['allowed_types']  = 'gif|jpg|png|jpeg';
 	            $config['overwrite']       = TRUE;
@@ -260,52 +264,55 @@
 			    			
 				if(! $this->upload->do_upload('userfile')){
 					$upload_error = array('error' => $this->upload->display_errors());
-					// echo $config['upload_path'];
-					print_r($upload_error);
+					echo "<script>
+					alert('Gambar yang anda upload tidak sesuai dengan persyaratan, silahkan dilakukan pengecekan ukuran gambar');
+					window.location.href='" . base_url() . "admin/training/updateviewetraining/".$id."';
+					</script>";
 					
 				}
 				if( $this->upload->do_upload('userfile')){
 					$flag_upload = 1;
+					if($_POST['latlang'] != NULL){
+						$pos=$_POST['latlang'];
+						$pis = preg_replace("/[^0-9,.,-]/", "",$pos);
+						$pie = explode(",", $pis);
+					}
+					else{
+						$pie =  array();
+						$pie[0] = $_POST['lat'];
+						$pie[1] = $_POST['lang'];
+					}
+					
+					$this->load->model('admin/event_model');
+					// $this->load->library('upload', $config);
+					$nama = $_POST['nama'];
+				    $waktu = $_POST['reservationtime'];
+				    // $lat = $_POST['lat'];
+				    // $lang = $_POST['lang'];
+				    // // $animals = array('--Select Animal--', 'Cat', 'Dog', 'Cow');
+					$kota = $_POST['kota'];
+					$negara = $_POST['negara'];
+					$tipe = "Training";
+					$link = $_POST['link'];
+					
+					
+					$data = array(); 
+					$data = (explode(" ",$waktu));
+					// print_r((explode(" ",$waktu)));
+					// Array ( [0] => 03/05/2016 [1] => 00:00 [2] => [3] => - [4] => 03/05/2016 [5] => 23:59 [6] => )
+					
+					$tanggal_awal = $data[0];
+					$tanggal_akhir = $data[4];
+					$jam_awal = $data[1];
+					$jam_akhir = $data[5];
+					
+					
+					$masukkan_training = $this->event_model->update_with_training($id,$nama,$pie[0],$pie[1],$kota,$negara,$tanggal_awal,$tanggal_akhir,$jam_awal,$jam_akhir,$tipe,$link,$gab);
+					if($masukkan_training == 1 && $flag_upload == 1){
+						redirect('admin/training');
+					}	
 				}
-				if($_POST['latlang'] != NULL){
-					$pos=$_POST['latlang'];
-					$pis = preg_replace("/[^0-9,.,-]/", "",$pos);
-					$pie = explode(",", $pis);
-				}
-				else{
-					$pie =  array();
-					$pie[0] = $_POST['lat'];
-					$pie[1] = $_POST['lang'];
-				}
-				
-				$this->load->model('admin/event_model');
-				// $this->load->library('upload', $config);
-				$nama = $_POST['nama'];
-			    $waktu = $_POST['reservationtime'];
-			    // $lat = $_POST['lat'];
-			    // $lang = $_POST['lang'];
-			    // // $animals = array('--Select Animal--', 'Cat', 'Dog', 'Cow');
-				$kota = $_POST['kota'];
-				$negara = $_POST['negara'];
-				$tipe = "Training";
-				$link = $_POST['link'];
-				$id = $_POST['id'];
-				
-				$data = array(); 
-				$data = (explode(" ",$waktu));
-				// print_r((explode(" ",$waktu)));
-				// Array ( [0] => 03/05/2016 [1] => 00:00 [2] => [3] => - [4] => 03/05/2016 [5] => 23:59 [6] => )
-				
-				$tanggal_awal = $data[0];
-				$tanggal_akhir = $data[4];
-				$jam_awal = $data[1];
-				$jam_akhir = $data[5];
-				
-				
-				$masukkan_training = $this->event_model->update_with_training($id,$nama,$pie[0],$pie[1],$kota,$negara,$tanggal_awal,$tanggal_akhir,$jam_awal,$jam_akhir,$tipe,$link,$gab);
-				if($masukkan_training == 1 && $flag_upload == 1){
-					redirect('admin/training');
-				}	
+					
 			}
 		}
 	}

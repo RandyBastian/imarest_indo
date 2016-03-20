@@ -170,8 +170,14 @@
 		        $this->load->library('image_lib', $c_img_lib);
 		        $this->image_lib->resize();
 		    } if(! $this->upload->do_upload('userfile')){
-				$upload_error = array('error' => $this->upload->display_errors());
-				print_r($upload_error);	
+				$upload_error =  $this->upload->display_errors();
+				echo "<script>
+					alert('Gambar yang anda upload tidak sesuai dengan persyaratan, silahkan dilakukan pengecekan ukuran gambar');
+					</script>";
+				// echo "<script>";
+				// echo "alert($upload_error);";
+				// // echo "window.location.href='" . base_url() . "admin/Upload/hasilupload';";
+				// echo  "</script>";
 			}
 		}
 

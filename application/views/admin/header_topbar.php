@@ -36,6 +36,7 @@
     <script src="<?php echo base_url() ?>assets/admin/js/jquery-1.10.2.js" type="text/javascript"></script>
     <script src="<?php echo base_url() ?>assets/admin/js/jquery-ui-1.10.0.custom.min.js" type="text/javascript"></script>
     <script src="<?php echo base_url() ?>assets/admin/jtable/jtable/jquery.jtable.js" type="text/javascript"></script>
+    <script src="<?php echo base_url() ?>assets/admin/bootstrap/js/bootstrap.min.js"></script>
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
