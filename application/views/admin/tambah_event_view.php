@@ -102,8 +102,14 @@
             <div class="col-sm-6">
                 <select class="form-control select2" style="width: 100%;" id="tipe" name="tipe">
                   <option value="Event">Event</option>
-                  <option value="Confrence">Confrence</option>
+                  <option value="Conferences">Conferences</option>
                 </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Detail Event</label>
+            <div class="col-sm-6">
+              <input type="textarea" class="form-control" id="detail" name="detail" placeholder="detail">
             </div>
           </div>
           <div class="form-group">
@@ -132,8 +138,8 @@
             </div>
           </div> -->
           <div class="box-footer mid">
-            <a href="<?=site_url("admin/event")?>"><button type="button" class="btn btn-default">Cancel</button></a>
-            <button type="submit" class="btn btn-info right"  >Submit</button>
+            <a href="<?=site_url("admin/Event")?>"><button type="button" class="btn btn-default">Cancel</button></a>
+            <button type="submit" class="btn btn-info right" onclick="document.getElementById('detail').value=CKEDITOR.instances.detail.getData();" >Submit</button>
           </div>
         </div>
  
@@ -203,4 +209,5 @@
           showInputs: false
         });
       });
+     CKEDITOR.replace( 'detail' );
     </script>

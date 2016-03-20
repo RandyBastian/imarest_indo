@@ -14,8 +14,8 @@ class Verifikasi_login extends CI_Controller {
 		$data =  array('username' => $username);
 		$this->load->model('admin/login_model');
 		if ($this->login_model->login_admin($username,$password)==1){
-			$this->session->set_userdata($data);
-			redirect('admin/event', 'refresh');
+			$this->session->set_userdata('username',$username);
+			redirect('admin/Event', 'refresh');
 		}
 		else{
 			redirect('admin/login?status=0', 'refresh');

@@ -3,14 +3,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Top Navigation
-        <small>Example 2.0</small>
+        Tabel News
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Layout</a></li>
-        <li class="active">Top Navigation</li>
-      </ol>
     </section>
 
     <!-- Main content -->
@@ -26,7 +20,7 @@
 
               //Prepare jTable
               $('#PeopleTableContainer').jtable({
-                  title: 'Tabel Tambah Antrian',
+                  title: 'List News',
                   paging: true,
                   pageSize: 10,
                   sorting: true,
@@ -52,10 +46,12 @@
                       },  
                       isi_news: 
                       {
-                          title: 'Ringkasan'
+                          title: 'Ringkasan',
+                          list: false
                       },
                       lihat:
                       {
+                          width: '0.3%',
                           title: 'Edit',
                           display: function (data) 
                           {

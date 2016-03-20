@@ -4,13 +4,19 @@
   */
   class Kota extends CI_Controller
   {
-    // http://www.mixedwaves.com/filemanager_in_ckeditor/js/ckeditor/filemanager/browser/default/browser.html?Type=Image&Connector=http://www.mixedwaves.com/filemanager_in_ckeditor/js/ckeditor/filemanager/connectors/php/connector.php&CKEditor=editor1&CKEditorFuncNum=1&langCode=en
-    // http://localhost/imarest/assets/admin/plugins/ckeditor/filemanager/browser/default/browser.html?Type=Image&amp;Connector=http://localhost/imarest/assets/admin/plugins/ckeditor/filemanager/connectors/php/connector.php&CKEditor=Edit-isi_halaman&CKEditorFuncNum=1&langCode=en
-    // function __construct(argument)
-    // {
-    //   # code...
-    // }
+    function __construct()
+    {
+      parent::__construct();
+      $this->is_logged_in();
+    }
 
+    public function is_logged_in()
+      {
+          $user = $this->session->userdata('username');
+          if (!isset($user)) {
+        redirect(base_url());
+      }
+      }
     public function index(){
       $this->load->view('admin/header_topbar');
       $this->load->view('admin/kota_view');

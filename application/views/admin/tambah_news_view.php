@@ -38,7 +38,7 @@
             </div>
           </div> -->
           <div class="box-footer mid">
-            <a href="<?=site_url("admin/news")?>"><button type="button"class="btn btn-default">Cancel</button></a>
+            <a href="<?=site_url("admin/News")?>"><button type="button"class="btn btn-default">Cancel</button></a>
             <button type="submit" class="btn btn-info right" onclick="document.getElementById('isi').value=CKEDITOR.instances.isi.getData();">Submit</button>
           </div>
         </div>

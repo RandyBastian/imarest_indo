@@ -10,14 +10,9 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Top Navigation
-        <small>Example 2.0</small>
+        Tabel FAQ
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Layout</a></li>
-        <li class="active">Top Navigation</li>
-      </ol>
+      
     </section>
 
     <!-- Main content -->
@@ -30,7 +25,7 @@
 
               //Prepare jTable
               $('#PeopleTableContainer').jtable({
-                  title: 'Tabel Tambah Antrian',
+                  title: 'List FAQ',
                   paging: true,
                   pageSize: 10,
                   sorting: true,
@@ -59,7 +54,8 @@
                       answer: 
                       {
                           title: 'Answer',
-                          type: 'textarea'   
+                          type: 'textarea',
+                          list: false   
                       }
                   }
               });

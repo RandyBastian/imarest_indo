@@ -25,7 +25,15 @@
 			$this->load->helper(array('form', 'url'));
 	    	$this->load->library('form_validation');
 	    	$this->load->helper('date');
+	    	$this->is_logged_in();
 		}
+		public function is_logged_in()
+	    {
+	        $user = $this->session->userdata('username');
+	        if (!isset($user)) {
+				redirect(base_url());
+			}
+	    }
 
 		public function index(){
 			$this->load->view('admin/header_topbar');
@@ -70,7 +78,7 @@
 
    		  $name = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars
 
-	      $dir = now().$name;
+	      $dir = $name;
 
 	      mkdir('./assets/gambar/galeri/'.$dir, 0777, true);
 	      mkdir('./assets/gambar/thumbs/'.$dir, 0777, true);
@@ -107,18 +115,16 @@
 	      $data = $this->upload_model->cari_folder($id);
 	      $nama = $data->result_array();
 
-	      
-	      $path= '/assets/gambar/galeri/'.$nama[0]['letak_folder'];
+	      $path= $this->data['dir']['original'].$nama[0]['letak_folder']."/";
 	      // unlink(base_url("assets/gambar/galeri/14584095692016-03-19qwe/"));
-	      echo $path;
 		   // load the helper
-		  delete_files($path, true); // delete all files/folders
+		  rmdir($path); // delete all files/folders
 
-	      // $result = $this->upload_model->post_delete_upload($id);
+	      $result = $this->upload_model->post_delete_upload($id);
 
-	      // $jTableResult = array();
-	      // $jTableResult['Result'] = "OK";
-	      // print json_encode($jTableResult);
+	      $jTableResult = array();
+	      $jTableResult['Result'] = "OK";
+	      print json_encode($jTableResult);
 	    }
 
 	    public function upload_foto($letak)
@@ -129,7 +135,7 @@
 			$config['upload_path']    = $this->data['dir']['original'].$letak."/";
 			$config['allowed_types']  = 'gif|jpg|png|jpeg';
             $config['overwrite']       = TRUE;
-            $config['max_size']        = '1000000';  // Can be set to particular file size
+            $config['max_size']        = '100000';  // Can be set to particular file size
             $config['max_height']      = '768';
             $config['max_width']       = '1024';
             $new_name 				   = now();
@@ -182,8 +188,8 @@
 		}
 
 
-	    public function hasilupload($id=null){
-	    	$this->load->model('admin/upload_model');
+	   public function hasilupload($id=null){
+            $this->load->model('admin/upload_model');
 	    	$name = $this->upload_model->cari_folder($id);
 	    	$nama = $name->result_array();
 
@@ -201,7 +207,7 @@
 		    $this->load->library('pagination');
 
 		    $c_paginate['base_url'] = site_url('admin/Upload/hasilupload');
-		    $c_paginate['per_page'] = '9';
+		    $c_paginate['per_page'] = '1000';
 		    	    	// print_r($nama);
 		    $finish = $start + $c_paginate['per_page'];
 		    $letak_galeri = $this->data['dir']['original'].$nama[0]['letak_folder'];
@@ -215,7 +221,7 @@
 		            while (($file = readdir($dh)) !== false) {
 		                // get file extension
 		                $ext = strrev(strstr(strrev($file), ".", TRUE));
-		                if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png') {
+		                if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png' || $ext == 'PNG'|| $ext == 'gif') {
 		                    if ($start <= $this->data['total'] && $this->data['total'] < $finish) {
 		                        $nama[0]['letak_folder']."/".$this->data['images'][$i]['thumb'] = $file;
 		                        $nama[0]['letak_folder']."/".$this->data['images'][$i]['original'] = str_replace('thumb_', '', $file);
@@ -237,7 +243,7 @@
 		    $this->load->view('admin/header_topbar');
 		    $this->load->view('admin/lihatgaleri_view', $this->data);
 			$this->load->view('admin/footer');
-		}
+        }
 		public function delete()
 		{
 		    $letak=$this->uri->segment(4); // 1stsegment

@@ -10,8 +10,16 @@
 			parent::__construct();
 			$this->load->helper(array('form', 'url'));
 	    	$this->load->library('form_validation');
+	    	$this->is_logged_in();
 		}
 
+		public function is_logged_in()
+	    {
+	        $user = $this->session->userdata('username');
+	        if (!isset($user)) {
+				redirect(base_url());
+			}
+	    }
 		public function index(){
 			$this->load->view('admin/header_topbar');
 			$this->load->view('admin/news_view');
@@ -31,7 +39,9 @@
             $config['overwrite']       = TRUE;
             $config['max_size']        = '1000000';  // Can be set to particular file size
             $config['max_height']      = '768';
-            $config['max_width']       = '1024'; 
+            $config['max_width']       = '1024';
+            $new_name 				   = now().$_FILES["userfile"]['name'];;
+			$config['file_name'] 	   = $new_name;   
 
 			$this->load->library('upload',$config);
 			$this->upload->initialize($config);
@@ -51,7 +61,7 @@
 				$upload_error = array('error' => $this->upload->display_errors());
 				echo "<script>
 					alert('Gambar yang anda upload tidak sesuai dengan persyaratan, silahkan dilakukan pengecekan ukuran gambar');
-					window.location.href='" . base_url() . "admin/news/tambah';
+					window.location.href='" . base_url() . "admin/News/tambah';
 					</script>";
 			}
 			if( $this->upload->do_upload('userfile')){
@@ -137,7 +147,9 @@
 	            $config['overwrite']       = TRUE;
 	            $config['max_size']        = '1000000';  // Can be set to particular file size
 	            $config['max_height']      = '768';
-	            $config['max_width']       = '1024'; 
+	            $config['max_width']       = '1024';
+	            $new_name 				   = now().$_FILES["userfile"]['name'];;
+				$config['file_name'] 	   = $new_name;   
 
 				$this->load->library('upload',$config);
 				$this->upload->initialize($config);
@@ -156,7 +168,7 @@
 				if(! $this->upload->do_upload('userfile')){
 					$upload_error = array('error' => $this->upload->display_errors());
 					echo "<script>
-					window.location.href='" . base_url() . "admin/news/updateviewnews/".$id."';
+					window.location.href='" . base_url() . "admin/News/updateviewnews/".$id."';
 					alert('Gambar yang anda upload tidak sesuai dengan persyaratan, silahkan dilakukan pengecekan ukuran gambar');
 					</script>";
 					

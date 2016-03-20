@@ -3,14 +3,10 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Top Navigation
-        <small>Example 2.0</small>
+        Tabel Event dan Conferences
+        
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Layout</a></li>
-        <li class="active">Top Navigation</li>
-      </ol>
+   
     </section>
 
     <!-- Main content -->
@@ -26,7 +22,7 @@
 
               //Prepare jTable
               $('#PeopleTableContainer').jtable({
-                  title: 'Tabel Tambah Antrian',
+                  title: 'List Event dan Conferences',
                   paging: true,
                   pageSize: 10,
                   sorting: true,
@@ -92,7 +88,7 @@
                       tipe_event: 
                       {
                           title: 'Tipe',
-                          options: { 'Confrence': 'Confrence', 'Event': 'Event', 'Course': 'Course' }                          
+                          options: { 'Conferences': 'Conferences', 'Event': 'Event'}                          
                       },
                       pic_event: 
                       {
@@ -106,6 +102,7 @@
                       },
                       lihat:
                       {
+                          width: '3%',
                           title: 'Edit',
                           display: function (data) 
                           {

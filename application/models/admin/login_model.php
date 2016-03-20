@@ -4,6 +4,7 @@ Class Login_model extends CI_Model
 
 function login_admin($username, $password){
   if( $username == "admin" && $password == "admin"){
+    
     return true;
   }
   else{

@@ -114,6 +114,13 @@
             </div>
           </div>
           <div class="form-group">
+            <label class="col-sm-2 control-label">detail</label>
+            <div class="col-sm-6">
+              <!-- <input type="textarea" class="form-control" id="isi" name="isi" placeholder="isi" value=>  -->
+              <textarea name ="detail" class = "ckeditor"><?php echo $detail_event;?></textarea>
+            </div>
+          </div>
+          <div class="form-group">
             <label class="col-sm-2 control-label">Link Pendaftaran</label>
             <div class="col-sm-6">
               <input type="text" class="form-control" id="link" name="link" placeholder="Link" value=<?php echo $register_event?>>
@@ -139,8 +146,8 @@
             </div>
           </div> -->
           <div class="box-footer mid">
-            <a href="<?=site_url("admin/event/indextraining")?>"><button type="button" class="btn btn-default">Cancel</button></a>
-            <button type="submit" class="btn btn-info right"  >Submit</button>
+            <a href="<?=site_url("admin/Training")?>"><button type="button" class="btn btn-default">Cancel</button></a>
+            <button type="submit" class="btn btn-info right" onclick="document.getElementById('detail').value=CKEDITOR.instances.detail.getData();" >Submit</button>
           </div>
         </div>
  
@@ -210,4 +217,5 @@
           showInputs: false
         });
       });
+       CKEDITOR.replace( 'detail' );
     </script>

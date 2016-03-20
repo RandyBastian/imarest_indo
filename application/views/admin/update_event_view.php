@@ -111,8 +111,15 @@
                 <select class="form-control select2" style="width: 100%;" id="tipe" name="tipe" value=<?php echo $tipe_event;?>>
                   <!-- <option value="IT"  >Information Technology</option> -->
                   <option value="Event" <?php if ($tipe_event == "Event") echo "selected='selected'";?>>Course</option>
-                  <option value="Confrence" <?php if ($tipe_event == "Confrence") echo "selected='selected'";?>>Confrence</option>
+                  <option value="Conferences" <?php if ($tipe_event == "Conferences") echo "selected='selected'";?>>Confrence</option>
                 </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Detail Event</label>
+            <div class="col-sm-6">
+              <!-- <input type="textarea" class="form-control" id="isi" name="isi" placeholder="isi" value=>  -->
+              <textarea name ="detail" class = "ckeditor"><?php echo $detail_event;?></textarea>
             </div>
           </div>
           <div class="form-group">
@@ -141,8 +148,8 @@
             </div>
           </div> -->
           <div class="box-footer mid">
-            <a href="<?=site_url("admin/event")?>"><button type="button" class="btn btn-default">Cancel</button></a>
-            <button type="submit" class="btn btn-info right"  onclick="return getmap();" name="pos">Submit</button>
+            <a href="<?=site_url("admin/Event")?>"><button type="button" class="btn btn-default">Cancel</button></a>
+            <button type="submit" class="btn btn-info right"  onclick="document.getElementById('detail').value=CKEDITOR.instances.detail.getData();">Submit</button>
           </div>
         </div>
  
@@ -212,4 +219,5 @@
           showInputs: false
         });
       });
+       CKEDITOR.replace( 'detail' );
     </script>

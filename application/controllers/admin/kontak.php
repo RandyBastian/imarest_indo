@@ -4,8 +4,19 @@
 	*/
 	class Kontak extends CI_Controller
 	{
-		
-		public function index(){
+		function __construct()
+    {
+      parent::__construct();
+      $this->is_logged_in();
+    }
+		public function is_logged_in()
+      {
+          $user = $this->session->userdata('username');
+          if (!isset($user)) {
+        redirect(base_url());
+      }
+      }
+    public function index(){
       $this->load->view('admin/header_topbar');
       $this->load->view('admin/kontak_view');
       $this->load->view('admin/footer');

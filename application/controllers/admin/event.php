@@ -24,7 +24,15 @@
 			$this->load->helper(array('form', 'url'));
 	    	$this->load->library('form_validation');
 	    	$this->load->helper('date');
+	    	$this->is_logged_in();
 		}
+		public function is_logged_in()
+	    {
+	        $user = $this->session->userdata('username');
+	        if (!isset($user)) {
+				redirect(base_url());
+			}
+	    }
 
 		public function index(){
 			$this->load->view('admin/header_topbar');
@@ -163,7 +171,7 @@
             $config['max_size']        = '1000000';  // Can be set to particular file size
             $config['max_height']      = '768';
             $config['max_width']       = '1024';
-            $new_name = now();
+            $new_name = now().$_FILES["userfile"]['name'];
 			$config['file_name'] = $new_name; 
 
 			$this->load->library('upload',$config);
@@ -190,7 +198,7 @@
 				$upload_error = array('error' => $this->upload->display_errors());
 				echo "<script>
 					alert('Gambar yang anda upload tidak sesuai dengan persyaratan, silahkan dilakukan pengecekan ukuran gambar');
-					window.location.href='" . base_url() . "admin/event/tambah';
+					window.location.href='" . base_url() . "admin/Event/tambah';
 					</script>";
 				
 			}
@@ -211,6 +219,7 @@
 				$negara = $_POST['negara'];
 				$tipe = $_POST['tipe'];
 				$link = $_POST['link'];
+				$detail = $_POST['detail'];
 				
 				$data = array(); 
 				$data = (explode(" ",$waktu));
@@ -223,12 +232,12 @@
 				$jam_akhir = $data[5];
 				
 				
-				$masukkan_event = $this->event_model->masuk_event($nama,$pie[0],$pie[1],$kota,$negara,$tanggal_awal,$tanggal_akhir,$jam_awal,$jam_akhir,$tipe,$link,$gab);
+				$masukkan_event = $this->event_model->masuk_event($nama,$pie[0],$pie[1],$kota,$negara,$tanggal_awal,$tanggal_akhir,$jam_awal,$jam_akhir,$tipe,$link,$gab,$detail);
 				if($masukkan_event == 1 && $flag_upload == 1 && $tipe == 'Training'){
-					redirect('admin/event/indextraining');
+					redirect('admin/Event/indextraining');
 				}
 				else if($masukkan_event == 1 && $flag_upload == 1){
-					redirect('admin/event');
+					redirect('admin/Event');
 				}	
 			}
 				
@@ -287,6 +296,7 @@
 				$tipe = $_POST['tipe'];
 				$link = $_POST['link'];
 				$id = $_POST['id'];
+				$detail = $_POST['detail'];
 				
 				$data = array(); 
 				$data = (explode(" ",$waktu));
@@ -298,7 +308,7 @@
 
 				// print_r($pie);
 				
-				$masukkan_event = $this->event_model->update_without_event($id,$nama,$pie[0],$pie[1],$kota,$negara,$tanggal_awal,$tanggal_akhir,$jam_awal,$jam_akhir,$tipe,$link);
+				$masukkan_event = $this->event_model->update_without_event($id,$nama,$pie[0],$pie[1],$kota,$negara,$tanggal_awal,$tanggal_akhir,$jam_awal,$jam_akhir,$tipe,$link,$detail);
 				if($masukkan_event == 1){
 					redirect('admin/event');
 				}	
@@ -312,7 +322,7 @@
 	            $config['max_size']        = '1000000';  // Can be set to particular file size
 	            $config['max_height']      = '768';
 	            $config['max_width']       = '1024';
-	             $new_name 				   = now();
+	             $new_name 				   = now().$_FILES["userfile"]['name'];;
 			$config['file_name'] 	   = $new_name;  
 
 				$this->load->library('upload',$config);
@@ -337,7 +347,7 @@
 					echo "<script>
 
 					alert('Gambar yang anda upload tidak sesuai dengan persyaratan, silahkan dilakukan pengecekan ukuran gambar');
-					window.location.href='" . base_url() . "admin/event/updateviewevent/".$id."';
+					window.location.href='" . base_url() . "admin/Event/updateviewevent/".$id."';
 					</script>";
 					
 				}
@@ -365,6 +375,7 @@
 					$negara = $_POST['negara'];
 					$tipe = $_POST['tipe'];
 					$link = $_POST['link'];
+					$detail = $_POST['detail'];
 					
 					
 					$data = array(); 
@@ -378,7 +389,7 @@
 					$jam_akhir = $data[5];
 					
 					
-					$masukkan_event = $this->event_model->update_with_event($id,$nama,$pie[0],$pie[1],$kota,$negara,$tanggal_awal,$tanggal_akhir,$jam_awal,$jam_akhir,$tipe,$link,$gab);
+					$masukkan_event = $this->event_model->update_with_event($id,$nama,$pie[0],$pie[1],$kota,$negara,$tanggal_awal,$tanggal_akhir,$jam_awal,$jam_akhir,$tipe,$link,$gab,$detail);
 					if($masukkan_event == 1 && $flag_upload == 1){
 						redirect('admin/event');
 					}	

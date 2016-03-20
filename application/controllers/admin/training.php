@@ -11,8 +11,16 @@
 			$this->load->helper(array('form', 'url'));
 	    	$this->load->library('form_validation');
 	    	$this->load->helper('date');
+	    	$this->is_logged_in();
 		}
 
+		public function is_logged_in()
+	    {
+	        $user = $this->session->userdata('username');
+	        if (!isset($user)) {
+				redirect(base_url());
+			}
+	    }
 		public function index(){
 			$this->load->view('admin/header_topbar');
 			$this->load->view('admin/training_view');
@@ -98,7 +106,7 @@
             $config['max_size']        = '1000000';  // Can be set to particular file size
             $config['max_height']      = '768';
             $config['max_width']       = '1024';
-            $new_name 				   = now();
+            $new_name 				   = now().$_FILES["userfile"]['name'];
 			$config['file_name'] 	   = $new_name; 
 
 			$this->load->library('upload',$config);
@@ -118,7 +126,7 @@
 				$upload_error = array('error' => $this->upload->display_errors());
 				echo "<script>
 					alert('Gambar yang anda upload tidak sesuai dengan persyaratan, silahkan dilakukan pengecekan ukuran gambar');
-					window.location.href='" . base_url() . "admin/training/tambah';
+					window.location.href='" . base_url() . "admin/Training/tambah';
 					</script>";
 				
 			}
@@ -131,11 +139,13 @@
 				$this->load->model('admin/event_model');
 				// $this->load->library('upload', $config);
 				$nama = $_POST['nama'];
+				$waktu = $_POST['reservationtime'];
 			
 				$kota = $_POST['kota'];
 				$negara = $_POST['negara'];
 				$tipe = "Training";
 				$link = $_POST['link'];
+				$detail = $_POST['detail'];
 				
 				$data = array(); 
 				$data = (explode(" ",$waktu));
@@ -146,7 +156,7 @@
 				$jam_akhir = $data[5];
 				
 				
-				$masukkan_training = $this->event_model->masuk_event($nama,$pie[0],$pie[1],$kota,$negara,$tanggal_awal,$tanggal_akhir,$jam_awal,$jam_akhir,$tipe,$link,$gab);
+				$masukkan_training = $this->event_model->masuk_event($nama,$pie[0],$pie[1],$kota,$negara,$tanggal_awal,$tanggal_akhir,$jam_awal,$jam_akhir,$tipe,$link,$gab,$detail);
 				if($masukkan_training == 1 && $flag_upload == 1){
 					redirect('admin/training');
 				}	
@@ -219,6 +229,7 @@
 				$tipe = "Training";
 				$link = $_POST['link'];
 				$id = $_POST['id'];
+				$detail = $_POST['detail'];
 				
 				$data = array(); 
 				$data = (explode(" ",$waktu));
@@ -230,7 +241,7 @@
 
 				// print_r($pie);
 				
-				$masukkan_training = $this->event_model->update_without_training($id,$nama,$pie[0],$pie[1],$kota,$negara,$tanggal_awal,$tanggal_akhir,$jam_awal,$jam_akhir,$tipe,$link);
+				$masukkan_training = $this->event_model->update_without_training($id,$nama,$pie[0],$pie[1],$kota,$negara,$tanggal_awal,$tanggal_akhir,$jam_awal,$jam_akhir,$tipe,$link,$detail);
 				if($masukkan_training == 1){
 					redirect('admin/training');
 				}	
@@ -243,7 +254,7 @@
 	            $config['max_size']        = '1000000';  // Can be set to particular file size
 	            $config['max_height']      = '768';
 	            $config['max_width']       = '1024';
-	            $new_name 				   = now();
+	            $new_name 				   = now().$_FILES["userfile"]['name'];
 				$config['file_name'] 	   = $new_name;  
 
 				$this->load->library('upload',$config);
@@ -266,7 +277,7 @@
 					$upload_error = array('error' => $this->upload->display_errors());
 					echo "<script>
 					alert('Gambar yang anda upload tidak sesuai dengan persyaratan, silahkan dilakukan pengecekan ukuran gambar');
-					window.location.href='" . base_url() . "admin/training/updateviewetraining/".$id."';
+					window.location.href='" . base_url() . "admin/Training/updateviewetraining/".$id."';
 					</script>";
 					
 				}
@@ -294,6 +305,7 @@
 					$negara = $_POST['negara'];
 					$tipe = "Training";
 					$link = $_POST['link'];
+					$detail = $_POST['detail'];
 					
 					
 					$data = array(); 
@@ -307,7 +319,7 @@
 					$jam_akhir = $data[5];
 					
 					
-					$masukkan_training = $this->event_model->update_with_training($id,$nama,$pie[0],$pie[1],$kota,$negara,$tanggal_awal,$tanggal_akhir,$jam_awal,$jam_akhir,$tipe,$link,$gab);
+					$masukkan_training = $this->event_model->update_with_training($id,$nama,$pie[0],$pie[1],$kota,$negara,$tanggal_awal,$tanggal_akhir,$jam_awal,$jam_akhir,$tipe,$link,$gab,$detail);
 					if($masukkan_training == 1 && $flag_upload == 1){
 						redirect('admin/training');
 					}	

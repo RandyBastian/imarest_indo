@@ -37,6 +37,15 @@
     <script src="<?php echo base_url() ?>assets/admin/js/jquery-ui-1.10.0.custom.min.js" type="text/javascript"></script>
     <script src="<?php echo base_url() ?>assets/admin/jtable/jtable/jquery.jtable.js" type="text/javascript"></script>
     <script src="<?php echo base_url() ?>assets/admin/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/admin/js/jquery.bsPhotoGallery.js" type="text/javascript"></script>
+    <script>
+      $(document).ready(function(){
+        $('ul.first').bsPhotoGallery({
+          "classes" : "col-lg-2 col-md-4 col-sm-3 col-xs-4 col-xxs-12",
+          "hasModal" : true
+        });
+      });
+    </script>
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -46,6 +55,65 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Bree+Serif);
+
+      body {
+        background:#ebebeb;
+      }
+      ul {
+          padding:0 0 0 0;
+          margin:0 0 40px 0;
+      }
+      ul li {
+          list-style:none;
+          margin-bottom:10px;
+      }
+      ul li.bspHasModal {
+          cursor: pointer;
+      }
+      .modal-body {
+          padding:5px !important;
+      }
+      .modal-content {
+          border-radius:0;
+      }
+      .modal-dialog img {
+          text-align:center;
+          margin:0 auto;
+      }
+    .controls{
+        width:50px;
+        display:block;
+        font-size:11px;
+        padding-top:8px;
+        font-weight:bold;
+    }
+    .next {
+        float:right;
+        text-align:right;
+    }
+    .text {
+      font-family: 'Bree Serif';
+      color:#666;
+      font-size:11px;
+      margin-bottom:10px;
+      padding:12px;
+      background:#fff;
+    }
+    .glyphicon-remove-circle:hover {
+      cursor: pointer;
+    }
+    @media screen and (max-width: 380px){
+       .col-xxs-12 {
+         width:100%;
+       }
+       .col-xxs-12 img {
+         width:100%;
+       }
+    }
+
+  </style>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
   <body class="hold-transition skin-blue layout-top-nav">
     <div class="wrapper">
@@ -64,25 +132,25 @@
             <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
               <ul class="nav navbar-nav">
                 <li class="dropdown">
-                  <a href="<?=site_url("admin/news")?>">News</a>
+                  <a href="<?=site_url("admin/News")?>">News</a>
                 </li>
                 <li class="dropdown">
-                  <a href="<?=site_url("admin/halaman")?>">Halaman</a>
+                  <a href="<?=site_url("admin/Halaman")?>">Halaman</a>
                 </li>
                 <li class="dropdown">
-                  <a href="<?=site_url("admin/careers")?>">Careers</a>
+                  <a href="<?=site_url("admin/Careers")?>">Careers</a>
                 </li>
                 <li class="dropdown">
-                  <a href="<?=site_url("admin/faq")?>" >FAQ</a>
+                  <a href="<?=site_url("admin/Faq")?>" >FAQ</a>
                 </li>
                 <li class="dropdown">
-                    <a href="<?=site_url("admin/kontak")?>">Kontak</a>
+                    <a href="<?=site_url("admin/Kontak")?>">Kontak</a>
                 </li>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Event, Course, and Training<span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Event, Conferences, and Training<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="<?=site_url("admin/event")?>">Event and Confrence</a></li>
-                    <li><a href="<?=site_url("admin/training")?>">Training</a></li>
+                    <li><a href="<?=site_url("admin/Event")?>">Event and Conferences</a></li>
+                    <li><a href="<?=site_url("admin/Training")?>">Training</a></li>
                     <li><a href="<?=site_url("admin/Negara")?>">Negara</a></li>
                     <li><a href="<?=site_url("admin/Kota")?>">Kota</a></li>
                   </ul>
@@ -91,7 +159,7 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Galeri<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="<?=site_url("admin/Upload")?>">Foto</a></li>
-                    <li><a href="<?=site_url("admin/video")?>">Video</a></li>
+                    <li><a href="<?=site_url("admin/Video")?>">Video</a></li>
                   </ul>
                   
                 </li>
@@ -121,7 +189,7 @@
                       <!-- Menu Footer-->
                       <li class="user-footer">
                         <div class="pull-center">
-                          <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                          <a href="<?=base_url()?>/admin/Logout" class="btn btn-default btn-flat">Sign out</a>
                         </div>
                       </li>
                     </ul>

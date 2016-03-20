@@ -64,7 +64,8 @@
                           title: 'Lihat Video',
                           display: function (data) 
                           {
-                              return '<a href="'+ data.record.link_video +'">Lihat</a>';
+                              
+                              return '<a href="'+ data.record.link_video +'" target = "_blank">Lihat</a>';
                           },
                           edit: false,
                           sorting: false,
