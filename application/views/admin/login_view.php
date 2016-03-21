@@ -9,13 +9,14 @@
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/css/font-awesome.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/dist/css/AdminLTE.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/iCheck/square/blue.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/login/css/style.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -24,11 +25,16 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class="hold-transition login-page">
-    <div class="login-box">
-      
-      <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+  <body >
+    <div class="pen-title">
+      <h1>Imarest Indonesia Login Form</h1>
+    </div>
+    <div class="module form-module">
+      <div class="toggle">
+      </div>
+      <div class="form">
+        <h2>Login to your account</h2>
+
         <?php
                 $text = site_url("admin/verifikasi_login") ;
                 echo form_open_multipart($text);
@@ -37,8 +43,8 @@
               <?php
                   if(isset($_GET['status']) && $_GET['status'] == 0)
                   {
-                      echo "<div class='alert alert-danger alert-dismissable'  role='alert'>";
-                      echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
+                      echo "<div class='alert alert-danger'  role='alert'>";
+                      echo "<a class='close' data-dismiss='alert' aria-hidden='true'>&times;</a>";
                       echo "Pastikan username & password benar";
                       echo "</div>";
                   }
@@ -58,11 +64,10 @@
               <?php
                   echo form_close();
               ?>
-
-       
-      </div><!-- /.login-box-body -->
-    </div><!-- /.login-box -->
-
+ </div>
+</div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+   
     <!-- jQuery 2.1.4 -->
     <script src="<?php echo base_url() ?>assets/admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
@@ -73,8 +78,7 @@
       $(function () {
         $('input').iCheck({
           checkboxClass: 'icheckbox_square-blue',
-          radioClass: 'iradio_square-blue',
-          increaseArea: '20%' // optional
+          radioClass: 'iradio_square-blue'
         });
       });
     </script>
